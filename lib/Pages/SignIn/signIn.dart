@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:foresight/Components/Fields.dart';
 import 'package:foresight/Constants/FColors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -53,16 +52,59 @@ class SignIn extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    loginFields(
-                      Con: usernameCon,
-                      hintText: "Username",
+                    TextFormField(
+                      controller: usernameCon,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(color: black54),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(color: black54),
+                        ),
+                        hintText: "Username".tr(),
+                      ),
+                      style: GoogleFonts.jockeyOne(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                      onFieldSubmitted: (e) {
+                        if (e.trim().isNotEmpty &&
+                            passwordCon.text.trim().isNotEmpty) {
+                          Navigator.pushReplacementNamed(context, "HomePage");
+                        }
+                      },
                     ),
                     SizedBox(
                       height: 18,
                     ),
-                    loginFields(
-                      Con: passwordCon,
-                      hintText: "Password",
+                    TextFormField(
+                      controller: passwordCon,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(color: black54),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: BorderSide(color: black54),
+                        ),
+                        hintText: "Password".tr(),
+                      ),
+                      style: GoogleFonts.jockeyOne(
+                        fontSize: 20,
+                        color: Colors.black,
+                      ),
+                      onFieldSubmitted: (e) {
+                        if (usernameCon.text.trim().isNotEmpty &&
+                            e.trim().isNotEmpty) {
+                          Navigator.pushReplacementNamed(context, "HomePage");
+                        }
+                      },
                     ),
                     const SizedBox(
                       height: 12.5,
@@ -81,7 +123,7 @@ class SignIn extends StatelessWidget {
                       onPressed: () {
                         if (usernameCon.text.trim().isNotEmpty &&
                             passwordCon.text.trim().isNotEmpty) {
-                          Navigator.pushNamed(context, "HomePage");
+                          Navigator.pushReplacementNamed(context, "HomePage");
                         }
                       },
                       child: Text(

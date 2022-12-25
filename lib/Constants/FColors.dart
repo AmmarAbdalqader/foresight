@@ -9,6 +9,7 @@ Color? greyText = Colors.grey[300];
 
 Color mainColor = Color(0xFF23374D);
 Color primaryColor = Color(0xFF6BB6FF);
+Color eeeeee = Color(0xFFEEEEEE);
 Color success = Color(0xFF5cb85c);
 Color warning = Color(0xFFf0ad4e);
 Color danger = Color(0xFFd9534f);

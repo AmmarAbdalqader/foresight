@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foresight/Components/ExitDialog.dart';
 import 'package:foresight/Components/FAppBar.dart';
 import 'package:foresight/Components/FDrawer.dart';
 import 'package:foresight/Constants/FColors.dart';
@@ -12,13 +15,13 @@ import 'package:lottie/lottie.dart';
 class HomePage extends StatelessWidget {
   Widget HeaderWidget(context) {
     return Container(
-      height: 0.39.sh,
+      height: 300,
       child: Stack(
         children: [
           Container(
             padding: EdgeInsets.all(mainPadding),
             width: 1.sw,
-            height: 0.35.sh,
+            height: 280,
             color: primaryColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,17 +36,16 @@ class HomePage extends StatelessWidget {
                 Text(
                   "HereInForesight".tr(),
                   style: GoogleFonts.jockeyOne(
-                    fontSize: 24,
+                    fontSize: 18,
                     color: greyText,
                   ),
                 ),
-                // Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     SizedBox(
                       width: 0.6.sw,
-                      height: 0.18.sh,
+                      height: 160,
                       child: Lottie.asset('assets/lottie/Elearning.json'),
                     ),
                   ],
@@ -59,7 +61,6 @@ class HomePage extends StatelessWidget {
               child: Container(
                 clipBehavior: Clip.antiAlias,
                 width: 0.85.sw,
-                height: 60,
                 decoration: BoxDecoration(
                   color: white,
                   borderRadius: BorderRadius.circular(18),
@@ -69,23 +70,9 @@ class HomePage extends StatelessWidget {
                     border: InputBorder.none,
                     hintText: "Search...".tr(),
                     icon: Container(
-                      height: 70,
+                      padding: const EdgeInsets.symmetric(vertical: 15),
                       decoration: BoxDecoration(
                         color: success,
-                        // borderRadius: BorderRadius.only(
-                        //   bottomLeft: "CurrLang".tr() == "en"
-                        //       ? Radius.circular(15)
-                        //       : Radius.circular(0),
-                        //   topLeft: "CurrLang".tr() == "en"
-                        //       ? Radius.circular(15)
-                        //       : Radius.circular(0),
-                        //   bottomRight: "CurrLang".tr() == "ar"
-                        //       ? Radius.circular(15)
-                        //       : Radius.circular(0),
-                        //   topRight: "CurrLang".tr() == "ar"
-                        //       ? Radius.circular(15)
-                        //       : Radius.circular(0),
-                        // ),
                       ),
                       child: IconButton(
                         onPressed: () {},
@@ -108,7 +95,7 @@ class HomePage extends StatelessWidget {
 
   Widget CategoriesWidget(context) {
     return Container(
-      height: 0.40.sh,
+      height: 375,
       width: 1.sw,
       child: Column(
         children: [
@@ -160,7 +147,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            categoriesLottie[index].split(".")[0],
+                            categoriesLottie[index].split(".")[0].tr(),
                             style: GoogleFonts.jockeyOne(
                               fontSize: 18,
                             ),
@@ -184,32 +171,39 @@ class HomePage extends StatelessWidget {
   Widget WallpaperWidget(context) {
     return Container(
       width: 1.sw,
-      child: Column(
-        children: [
-          Image(
-            image: AssetImage("assets/images/foresight.jpg"), //  chart.png
-          ),
-        ],
+      child: Image(
+        image: AssetImage("assets/images/foresight.jpg"), //  chart.png
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: FAppBar(),
-      ),
-      drawer: FDrawer(),
-      backgroundColor: mainColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            HeaderWidget(context),
-            CategoriesWidget(context),
-            WallpaperWidget(context),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        return await ExitDialog(
+          context,
+          "AreYouSureToExit",
+          "WeWillMissYou!",
+          () => exit(0),
+          'Exit',
+        );
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: FAppBar(),
+        ),
+        drawer: FDrawer(),
+        backgroundColor: mainColor,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              HeaderWidget(context),
+              CategoriesWidget(context),
+              WallpaperWidget(context),
+            ],
+          ),
         ),
       ),
     );

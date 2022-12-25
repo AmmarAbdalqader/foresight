@@ -14,5 +14,11 @@
   "Sports" :  "Sports",
   "Languages" : "Languages",
   "ForgetYourPassword?" : "Forget your password?",
-  "RegisterNow!" : "Register now!"
+  "RegisterNow!" : "Register now!",
+  "OK" : "Ok",
+  "AreYouSureToExit" : "Are you sure to exit",
+  "AreYouSureToSignOut" : "Are you sure to sign out",
+  "WeWillMissYou!" : "We will miss you!",
+  "Exit" : "Exit",
+  "Cancel" : "Cancel"
 }

@@ -14,12 +14,13 @@ List<List<String>> allLottie = [
 
 List<String> programmingLottie = [
   "Flutter.json",
-  "Php.json",
-  "C.json",
-  "Html.json",
+  "Angular.json",
   "Android.json",
-  "Css.json",
   "Javascript.json",
+  "C.json",
+  "Php.json",
+  "Html.json",
+  "Css.json",
 ];
 
 List<String> sportsLottie = [

@@ -66,7 +66,7 @@ class CategoryDetails extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onLongPress: () {
-                    InfoDialog(lesson: categoryList[index]);
+                    InfoDialog(context, categoryList[index]);
                   },
                   child: Container(
                     margin: EdgeInsets.all(10),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/cupertino.dart';
 
 class FAppBar extends StatelessWidget {
   @override
@@ -21,8 +22,9 @@ class FAppBar extends StatelessWidget {
         IconButton(
           onPressed: () {},
           icon: Icon(
-            Icons.person_pin,
+            CupertinoIcons.person_crop_circle,
             color: white,
+            size: 35,
           ),
         )
       ],
