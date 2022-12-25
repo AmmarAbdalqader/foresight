@@ -1,5 +1,18 @@
 {
   "CurrLang" : "en",
+  "OtherLang" : "العربية",
   "LearnEveryThing" : "Learn every thing",
-  "HereInForesight" : "Here in Foresight"
+  "HereInForesight" : "Here in Foresight",
+  "Search..." : "Search...",
+  "OurCategories" : "our categories",
+  "SignIn" : "Sign in",
+  "SignOut" : "Sign out",
+  "Username" : "Username",
+  "Password" : "Password",
+  "Cooking" : "Cooking",
+  "Programming" : "Programming",
+  "Sports" :  "Sports",
+  "Languages" : "Languages",
+  "ForgetYourPassword?" : "Forget your password?",
+  "RegisterNow!" : "Register now!"
 }

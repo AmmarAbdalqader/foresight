@@ -11,9 +11,9 @@ class FAppBar extends StatelessWidget {
         "Foresight",
         style: GoogleFonts.jockeyOne(
           color: white,
-          letterSpacing: 0.2,
+          letterSpacing: 2,
           fontWeight: FontWeight.bold,
-          fontSize: 20,
+          fontSize: 25,
         ),
       ),
       centerTitle: true,

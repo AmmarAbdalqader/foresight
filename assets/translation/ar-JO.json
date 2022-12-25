@@ -1,6 +1,18 @@
 {
   "CurrLang" : "ar",
+  "OtherLang" : "English",
   "LearnEveryThing" : "تعلم كل شيء",
-  "HereInForesight" : "هنا في فورسايت"
-
+  "HereInForesight" : "هنا في فورسايت",
+  "Search..." : "أبحث...",
+  "OurCategories" : "تصينفاتنا",
+  "SignIn" : "تسجيل دخول",
+  "SignOut" : "تسجيل الخروج",
+  "Username" : "اسم المستخدم",
+  "Password" : "كلمة المرور",
+  "Cooking" : "الطبخ",
+  "Programming" : "البرمجة",
+  "Sports" :  "الرياضة",
+  "Languages" : "اللغات",
+  "ForgetYourPassword?" : "نسيت كلمة المرور؟",
+  "RegisterNow!" : "انشئ حساب!"
 }

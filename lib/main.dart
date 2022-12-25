@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foresight/Pages/Home/index.dart';
+import 'package:foresight/Pages/SignIn/signIn.dart';
 import 'package:foresight/Pages/Splash.dart';
 
 void main() async {
@@ -36,9 +37,10 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 10.sp),
           ),
-          initialRoute: 'HomePage',
+          initialRoute: 'SignIn',
           routes: {
             '/': (context) => Splash(),
+            'SignIn': (context) => SignIn(),
             'HomePage': (context) => HomePage(),
           },
         );
