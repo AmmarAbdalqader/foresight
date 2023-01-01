@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foresight/Pages/CourseDetails/index.dart';
 import 'package:foresight/Pages/Home/index.dart';
 import 'package:foresight/Pages/SignIn/signIn.dart';
 import 'package:foresight/Pages/Splash.dart';
+import 'Pages/CategoryCourses/index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,13 +37,18 @@ class MyApp extends StatelessWidget {
           title: 'Foresight',
           theme: ThemeData(
             primarySwatch: Colors.blue,
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 10.sp),
+            textTheme:
+                Typography.englishLike2018.apply(fontSizeFactor: 1.23.sp),
           ),
           initialRoute: '/',
           routes: {
             '/': (context) => Splash(),
             'SignIn': (context) => SignIn(),
             'HomePage': (context) => HomePage(),
+            'CategoryCourses': (context) => CategoryCourses(
+                lesson: ModalRoute.of(context)!.settings.arguments.toString()),
+            'CourseDetails': (context) => CourseDetails(
+                lesson: ModalRoute.of(context)!.settings.arguments.toString()),
           },
         );
       },

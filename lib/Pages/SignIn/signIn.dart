@@ -121,10 +121,10 @@ class SignIn extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        if (usernameCon.text.trim().isNotEmpty &&
-                            passwordCon.text.trim().isNotEmpty) {
-                          Navigator.pushReplacementNamed(context, "HomePage");
-                        }
+                        // if (usernameCon.text.trim().isNotEmpty &&
+                        //     passwordCon.text.trim().isNotEmpty) {
+                        Navigator.pushReplacementNamed(context, "HomePage");
+                        // }
                       },
                       child: Text(
                         "SignIn".tr(),

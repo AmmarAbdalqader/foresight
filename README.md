@@ -1,3 +1,3 @@
-# foresight
+# Foresight
 
-# flutter --v 3.3.8
+# Flutter --v 3.3.8

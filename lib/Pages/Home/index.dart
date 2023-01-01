@@ -1,16 +1,17 @@
 import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foresight/Components/ExitDialog.dart';
 import 'package:foresight/Components/FAppBar.dart';
 import 'package:foresight/Components/FDrawer.dart';
+import 'package:foresight/Components/SearchField.dart';
 import 'package:foresight/Constants/FColors.dart';
 import 'package:foresight/Constants/mainLists.dart';
 import 'package:foresight/Pages/CategoryDetails/index.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:foresight/Components/PosterSlider.dart';
 
 class HomePage extends StatelessWidget {
   Widget HeaderWidget(context) {
@@ -58,33 +59,9 @@ class HomePage extends StatelessWidget {
             left: 0,
             right: 0,
             child: Center(
-              child: Container(
-                clipBehavior: Clip.antiAlias,
-                width: 0.85.sw,
-                decoration: BoxDecoration(
-                  color: white,
-                  borderRadius: BorderRadius.circular(18),
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Search...".tr(),
-                    icon: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      decoration: BoxDecoration(
-                        color: success,
-                      ),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.search, color: white),
-                      ),
-                    ),
-                  ),
-                  style: GoogleFonts.jockeyOne(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                ),
+              child: SearchField(
+                colorBTN: success,
+                OnPress: () {},
               ),
             ),
           ),
@@ -201,7 +178,7 @@ class HomePage extends StatelessWidget {
             children: [
               HeaderWidget(context),
               CategoriesWidget(context),
-              WallpaperWidget(context),
+              PosterSlider(),
             ],
           ),
         ),

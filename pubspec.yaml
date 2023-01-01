@@ -1,10 +1,8 @@
 name: foresight
-description: A new Flutter project.
+description: Graduation porject clone from Web to Flutter.
 
 publish_to: 'none'
-
 version: 1.0.0+1
-
 environment:
   sdk: '>=2.18.4 <3.0.0'
 
@@ -20,6 +18,8 @@ dependencies:
   flutter_screenutil: ^5.6.0
   http: ^0.13.5
   google_fonts: ^3.0.1
+  flutter_rating_bar: ^4.0.1
+  flutter_image_slideshow: ^0.1.4
 
 dev_dependencies:
   flutter_test:

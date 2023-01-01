@@ -62,6 +62,20 @@ class FDrawer extends StatelessWidget {
             ),
             ListTile(
               title: Text(
+                "Favorites".tr(),
+                style: GoogleFonts.jockeyOne(
+                  fontSize: 25,
+                  color: white,
+                ),
+              ),
+              onTap: () async {},
+              leading: Icon(
+                Icons.favorite,
+                color: danger,
+              ),
+            ),
+            ListTile(
+              title: Text(
                 "OtherLang".tr(),
                 style: GoogleFonts.jockeyOne(
                   fontSize: 25,

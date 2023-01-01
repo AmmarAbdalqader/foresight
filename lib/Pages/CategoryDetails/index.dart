@@ -68,6 +68,10 @@ class CategoryDetails extends StatelessWidget {
                   onLongPress: () {
                     InfoDialog(context, categoryList[index]);
                   },
+                  onTap: () {
+                    Navigator.pushNamed(context, "CategoryCourses",
+                        arguments: categoryList[index]);
+                  },
                   child: Container(
                     margin: EdgeInsets.all(10),
                     padding: EdgeInsets.all(12),
