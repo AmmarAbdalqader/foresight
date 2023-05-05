@@ -12,9 +12,10 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var userCon = context.watch<UserCon>();
-    Future<void>.delayed(const Duration(seconds: 2), () async {
-      await userCon.splash(context);
-    });
+    Future.delayed(
+      const Duration(seconds: 1),
+      () async => await userCon.splash(context),
+    );
     return Scaffold(
       backgroundColor: primaryColor.withOpacity(0.5),
       body: Center(

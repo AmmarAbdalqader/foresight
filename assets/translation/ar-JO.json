@@ -23,5 +23,9 @@
   "Cancel" : "الغاء",
   "Favorites" : "المفضلة",
   "WrongUsernameOrPassword" : "خطأ في اسم المستخدم او كلمة السر",
-  "AnErrorHasOccurred" : "حصل خطأ ما"
+  "AnErrorHasOccurred" : "حصل خطأ ما",
+  "createAccount" : "لا تمتلك حساب؟",
+  "Ops" : "اوبس!",
+  "InputAllFields" : "تأكد من ادخال اسم المستخدم و كلمة السر",
+  "CheckYourInternet" : "تأكد من اتصالك بالانترنت"
 }

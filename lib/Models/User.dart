@@ -1,11 +1,9 @@
 import 'dart:convert';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
+import 'package:foresight/Components/FSnackBar.dart';
 import 'package:foresight/Constants/AppConfig.dart';
 import 'package:foresight/Helpers/API.dart';
 import 'package:foresight/Helpers/HTTP.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../Constants/FColors.dart';
 
 class User {
   final int id;
@@ -54,38 +52,10 @@ class User {
           await sp.setInt("UserID", user!.id);
         });
       } else if (res.statusCode == 444 && res.body.contains("Not found User")) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: danger,
-            content: ListTile(
-              title: Text(
-                "WrongUsernameOrPassword".tr(),
-                style: const TextStyle(color: white),
-              ),
-              trailing: const Icon(
-                Icons.error,
-                color: white,
-              ),
-            ),
-          ),
-        );
+        await FSnackBar(context, 'Ops', 'WrongUsernameOrPassword');
       }
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: danger,
-          content: ListTile(
-            title: Text(
-              "AnErrorHasOccurred".tr(),
-              style: const TextStyle(color: white),
-            ),
-            trailing: const Icon(
-              Icons.error,
-              color: white,
-            ),
-          ),
-        ),
-      );
+      await FSnackBar(context, 'AnErrorHasOccurred', 'CheckYourInternet');
     }
     return user;
   }

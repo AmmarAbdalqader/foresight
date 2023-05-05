@@ -4,7 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
 
 class FAppBar extends StatelessWidget {
-  const FAppBar({super.key});
+  const FAppBar({super.key, this.showUserPhoto = true});
+
+  final bool showUserPhoto;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +23,15 @@ class FAppBar extends StatelessWidget {
       ),
       centerTitle: true,
       actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            CupertinoIcons.person_crop_circle,
-            color: white,
-            size: 35,
+        Visibility(
+          visible: showUserPhoto,
+          child: IconButton(
+            onPressed: () => Navigator.pushNamed(context, "profile"),
+            icon: const Icon(
+              CupertinoIcons.person_crop_circle,
+              color: white,
+              size: 35,
+            ),
           ),
         )
       ],

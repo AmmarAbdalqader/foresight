@@ -4,7 +4,7 @@
   "LearnEveryThing" : "Learn every thing",
   "HereInForesight" : "Here in Foresight",
   "Search..." : "Search...",
-  "OurCategories" : "our categories",
+  "OurCategories" : "Our categories",
   "SignIn" : "Sign in",
   "SignOut" : "Sign out",
   "Username" : "Username",
@@ -23,5 +23,9 @@
   "Cancel" : "Cancel",
   "Favorites" : "Favorites",
   "WrongUsernameOrPassword" : "Wrong username or password",
-  "AnErrorHasOccurred" : "An error has occurred"
+  "AnErrorHasOccurred" : "An error has occurred",
+  "createAccount" : "Don't have an account?",
+  "Ops" : "Ops!",
+  "InputAllFields" : "Make sure to input username and password",
+  "CheckYourInternet" : "Check your internet connection"
 }

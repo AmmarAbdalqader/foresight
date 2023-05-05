@@ -6,6 +6,7 @@ import 'package:foresight/Pages/CourseDetails/index.dart';
 import 'package:foresight/Pages/Home/index.dart';
 import 'package:foresight/Pages/SignIn/signIn.dart';
 import 'package:foresight/Pages/Splash.dart';
+import 'package:foresight/Pages/profile/index.dart';
 import 'package:provider/provider.dart';
 import 'Pages/CategoryCourses/index.dart';
 
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
               '/': (context) => const Splash(),
               'SignIn': (context) => const SignIn(),
               'HomePage': (context) => const HomePage(),
+              'profile': (context) => const Profile(),
               'CategoryCourses': (context) => CategoryCourses(
                   lesson:
                       ModalRoute.of(context)!.settings.arguments.toString()),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:foresight/Models/User.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Components/FSnackBar.dart';
+
 class UserCon extends ChangeNotifier {
   User? user;
   final TextEditingController usernameCon = TextEditingController();
@@ -20,6 +22,7 @@ class UserCon extends ChangeNotifier {
   }
 
   Future signIn(context) async {
+    FocusScope.of(context).requestFocus(FocusNode());
     if (usernameCon.text.trim().isNotEmpty &&
         passwordCon.text.trim().isNotEmpty) {
       loading();
@@ -29,7 +32,7 @@ class UserCon extends ChangeNotifier {
       }
       loading();
     } else {
-      // snackBar
+      await FSnackBar(context, 'Ops', 'InputAllFields');
     }
   }
 
@@ -42,13 +45,13 @@ class UserCon extends ChangeNotifier {
   }
 
   Future splash(context) async {
-    SharedPreferences.getInstance().then((sp) async {
-      int? userID = sp.getInt("UserID");
-      if (userID != null && userID != 0) {
-        await getUserByID(context, userID);
-      } else {
-        Navigator.of(context).pushReplacementNamed("SignIn");
-      }
-    });
+    final SharedPreferences sp = await SharedPreferences.getInstance();
+
+    int? userID = sp.getInt("UserID");
+    if (userID != null && userID != 0) {
+      await getUserByID(context, userID);
+    } else {
+      Navigator.of(context).pushReplacementNamed("SignIn");
+    }
   }
 }

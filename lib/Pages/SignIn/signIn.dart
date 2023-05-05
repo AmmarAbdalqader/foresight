@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
 import 'package:foresight/Controllers/UserCon.dart';
@@ -21,18 +22,16 @@ class SignIn extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 45),
+              padding: const EdgeInsets.only(top: 45),
               child: Text(
                 "Foresight",
                 style: GoogleFonts.tajawal(
                   color: white,
                   fontSize: 35,
                   letterSpacing: 3.5,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 15,
             ),
             Expanded(
               child: Container(
@@ -78,27 +77,39 @@ class SignIn extends StatelessWidget {
                     const SizedBox(
                       height: 18,
                     ),
-                    TextFormField(
-                      controller: userCon.passwordCon,
-                      obscureText: userCon.obscureText,
-                      decoration: InputDecoration(
-                        icon: const Icon(Icons.password),
-                        iconColor: black54,
-                        border: InputBorder.none,
-                        focusedBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black54),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: userCon.passwordCon,
+                            obscureText: userCon.obscureText,
+                            decoration: InputDecoration(
+                              icon: const Icon(Icons.password),
+                              iconColor: black54,
+                              border: InputBorder.none,
+                              focusedBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black54),
+                              ),
+                              enabledBorder: const UnderlineInputBorder(
+                                borderSide: BorderSide(color: black54),
+                              ),
+                              hintText: "Password".tr(),
+                            ),
+                            style: GoogleFonts.tajawal(
+                              fontSize: 16,
+                              color: black,
+                            ),
+                            onFieldSubmitted: (e) async =>
+                                await userCon.signIn(context),
+                          ),
                         ),
-                        enabledBorder: const UnderlineInputBorder(
-                          borderSide: BorderSide(color: black54),
+                        IconButton(
+                          onPressed: () => userCon.flipObscureText(),
+                          icon: Icon(userCon.obscureText
+                              ? CupertinoIcons.eye_slash_fill
+                              : CupertinoIcons.eye_solid),
                         ),
-                        hintText: "Password".tr(),
-                      ),
-                      style: GoogleFonts.tajawal(
-                        fontSize: 16,
-                        color: black,
-                      ),
-                      onFieldSubmitted: (e) async =>
-                          await userCon.signIn(context),
+                      ],
                     ),
                     const SizedBox(
                       height: 24,
@@ -135,12 +146,25 @@ class SignIn extends StatelessWidget {
                     const SizedBox(
                       height: 45,
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "RegisterNow!".tr(),
-                        style: const TextStyle(fontSize: 18),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "createAccount".tr(),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: black54,
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "RegisterNow!".tr(),
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ],
                     ),
                     const Spacer(),
                     const Spacer(),

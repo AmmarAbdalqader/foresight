@@ -33,29 +33,32 @@ class FDrawer extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 28),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Icon(
-                        CupertinoIcons.person_crop_circle,
-                        color: white,
-                        size: 55,
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12),
-                        child: Text(
-                          userCon.user!.name,
-                          style: GoogleFonts.tajawal(
-                            color: white,
-                            fontSize: 25,
+                  InkWell(
+                    onTap: () => Navigator.pushNamed(context, "profile"),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          CupertinoIcons.person_crop_circle,
+                          color: white,
+                          size: 55,
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12),
+                          child: Text(
+                            userCon.user!.name,
+                            style: GoogleFonts.tajawal(
+                              color: white,
+                              fontSize: 25,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -70,7 +73,7 @@ class FDrawer extends StatelessWidget {
               title: Text(
                 "Favorites".tr(),
                 style: GoogleFonts.tajawal(
-                  fontSize: 25,
+                  fontSize: 20,
                   color: white,
                 ),
               ),
@@ -84,7 +87,7 @@ class FDrawer extends StatelessWidget {
               title: Text(
                 "OtherLang".tr(),
                 style: GoogleFonts.tajawal(
-                  fontSize: 25,
+                  fontSize: 20,
                   color: white,
                 ),
               ),
@@ -104,7 +107,7 @@ class FDrawer extends StatelessWidget {
               title: Text(
                 "SignOut".tr(),
                 style: GoogleFonts.tajawal(
-                  fontSize: 25,
+                  fontSize: 20,
                   color: white,
                 ),
               ),
