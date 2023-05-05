@@ -4,7 +4,8 @@ import 'package:lottie/lottie.dart';
 import 'dart:math';
 
 class CourseListTile extends StatelessWidget {
-  CourseListTile({
+  const CourseListTile({
+    super.key,
     required this.lesson,
   });
   final String lesson;
@@ -39,7 +40,7 @@ class CourseListTile extends StatelessWidget {
               ignoreGestures: true,
               itemSize: 15,
               itemCount: 5,
-              itemBuilder: (context, _) => Icon(
+              itemBuilder: (context, _) => const Icon(
                 Icons.star,
                 color: Colors.amber,
               ),
@@ -50,18 +51,18 @@ class CourseListTile extends StatelessWidget {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
               lesson.split(".")[0],
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Row(
-              children: [
+              children: const [
                 Icon(
                   Icons.person,
                   size: 20,
@@ -77,11 +78,11 @@ class CourseListTile extends StatelessWidget {
             ),
           ],
         ),
-        leading: Lottie.asset("assets/lottie/" + lesson),
+        leading: Lottie.asset("assets/lottie/$lesson"),
         horizontalTitleGap: 1.2,
         isThreeLine: true,
-        contentPadding: EdgeInsets.all(12),
-        visualDensity: VisualDensity(
+        contentPadding: const EdgeInsets.all(12),
+        visualDensity: const VisualDensity(
           vertical: VisualDensity.maximumDensity,
           horizontal: VisualDensity.maximumDensity,
         ),

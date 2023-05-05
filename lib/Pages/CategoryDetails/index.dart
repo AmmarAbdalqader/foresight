@@ -11,24 +11,25 @@ class CategoryDetails extends StatelessWidget {
   final String category;
   final List<String> categoryList;
 
-  CategoryDetails({required this.category, required this.categoryList});
+  const CategoryDetails(
+      {super.key, required this.category, required this.categoryList});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
         child: FAppBar(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Text(
             category.tr(),
-            style: GoogleFonts.jockeyOne(
+            style: GoogleFonts.tajawal(
               fontSize: 30,
               color: primaryColor,
             ),
@@ -55,33 +56,33 @@ class CategoryDetails extends StatelessWidget {
           Expanded(
             child: GridView.builder(
               itemCount: categoryList.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 5,
               ),
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               clipBehavior: Clip.antiAlias,
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onLongPress: () {
-                    InfoDialog(context, categoryList[index]);
+                    infoDialog(context, categoryList[index]);
                   },
                   onTap: () {
                     Navigator.pushNamed(context, "CategoryCourses",
                         arguments: categoryList[index]);
                   },
                   child: Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(12),
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(12),
                     height: 50,
                     width: 26,
                     decoration: BoxDecoration(
                       color: white,
                       borderRadius: BorderRadius.circular(24),
                       border: Border.all(color: black54),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: black54,
                           spreadRadius: 1,
@@ -95,13 +96,13 @@ class CategoryDetails extends StatelessWidget {
                       children: [
                         Expanded(
                           child: Lottie.asset(
-                            "assets/lottie/" + categoryList[index],
+                            "assets/lottie/${categoryList[index]}",
                             width: 200,
                           ),
                         ),
                         Text(
                           categoryList[index].split(".")[0],
-                          style: GoogleFonts.jockeyOne(fontSize: 22),
+                          style: GoogleFonts.tajawal(fontSize: 22),
                         ),
                       ],
                     ),

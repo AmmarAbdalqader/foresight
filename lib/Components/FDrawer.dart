@@ -2,15 +2,21 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foresight/Components/ExitDialog.dart';
 import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Controllers/UserCon.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FDrawer extends StatelessWidget {
+  const FDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
+    var userCon = context.read<UserCon>();
     return Drawer(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
@@ -19,31 +25,31 @@ class FDrawer extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               height: 120,
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 28),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 28),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
+                      const Icon(
                         CupertinoIcons.person_crop_circle,
                         color: white,
                         size: 55,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 15,
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 12),
+                        padding: const EdgeInsets.only(top: 12),
                         child: Text(
-                          "Ammar",
-                          style: GoogleFonts.jockeyOne(
+                          userCon.user!.name,
+                          style: GoogleFonts.tajawal(
                             color: white,
                             fontSize: 25,
                           ),
@@ -54,7 +60,7 @@ class FDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(
+            const Divider(
               color: white,
               endIndent: 15,
               indent: 15,
@@ -63,13 +69,13 @@ class FDrawer extends StatelessWidget {
             ListTile(
               title: Text(
                 "Favorites".tr(),
-                style: GoogleFonts.jockeyOne(
+                style: GoogleFonts.tajawal(
                   fontSize: 25,
                   color: white,
                 ),
               ),
               onTap: () async {},
-              leading: Icon(
+              leading: const Icon(
                 Icons.favorite,
                 color: danger,
               ),
@@ -77,19 +83,19 @@ class FDrawer extends StatelessWidget {
             ListTile(
               title: Text(
                 "OtherLang".tr(),
-                style: GoogleFonts.jockeyOne(
+                style: GoogleFonts.tajawal(
                   fontSize: 25,
                   color: white,
                 ),
               ),
               onTap: () async {
                 if ("CurrLang".tr() == "ar") {
-                  await context.setLocale(Locale('en', 'JO'));
+                  await context.setLocale(const Locale('en', 'JO'));
                 } else {
-                  await context.setLocale(Locale('ar', 'JO'));
+                  await context.setLocale(const Locale('ar', 'JO'));
                 }
               },
-              leading: Icon(
+              leading: const Icon(
                 Icons.translate,
                 color: white,
               ),
@@ -97,27 +103,33 @@ class FDrawer extends StatelessWidget {
             ListTile(
               title: Text(
                 "SignOut".tr(),
-                style: GoogleFonts.jockeyOne(
+                style: GoogleFonts.tajawal(
                   fontSize: 25,
                   color: white,
                 ),
               ),
-              onTap: () async => await ExitDialog(
-                  context,
-                  "AreYouSureToSignOut",
-                  "WeWillMissYou!",
-                  () => Navigator.pushReplacementNamed(context, "SignIn"),
-                  "SignOut"),
-              leading: Icon(
+              onTap: () async => await exitDialog(
+                context,
+                "AreYouSureToSignOut",
+                "WeWillMissYou!",
+                () {
+                  SharedPreferences.getInstance().then((sp) {
+                    sp.setInt("UserID", 0);
+                  });
+                  Navigator.pushReplacementNamed(context, "SignIn");
+                },
+                "SignOut",
+              ),
+              leading: const Icon(
                 Icons.logout,
                 color: white,
               ),
             ),
-            Spacer(),
+            const Spacer(),
             Center(
               child: Text(
                 "Designed by AKA",
-                style: GoogleFonts.jockeyOne(
+                style: GoogleFonts.tajawal(
                   fontSize: 15,
                   color: black,
                 ),

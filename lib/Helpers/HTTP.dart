@@ -7,10 +7,10 @@ import 'package:retry/retry.dart';
 
 class HTTP {
   static Future<http.Response> get(String url) async {
-    final r = RetryOptions(maxAttempts: 3);
+    const r = RetryOptions(maxAttempts: 3);
     log(url);
     final response = await r.retry(
-      () => http.get(Uri.parse(url)).timeout(Duration(seconds: 3)),
+      () => http.get(Uri.parse(url)).timeout(const Duration(seconds: 3)),
       retryIf: (e) => e is SocketException || e is TimeoutException,
     );
     log(response.statusCode.toString());
@@ -19,6 +19,7 @@ class HTTP {
 
   static Future<http.Response> post(String url, Map body) async {
     log(url);
+    log(jsonEncode(body));
 
     final response = await http.post(Uri.parse(url),
         headers: {

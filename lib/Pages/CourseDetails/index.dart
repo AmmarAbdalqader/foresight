@@ -5,22 +5,25 @@ import 'package:lottie/lottie.dart';
 import 'package:foresight/Components/PosterSlider.dart';
 
 class CourseDetails extends StatelessWidget {
-  CourseDetails({required this.lesson});
+  const CourseDetails({super.key, required this.lesson});
 
   final String lesson;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
         child: FAppBar(),
       ),
       backgroundColor: white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [PosterSlider(), Lottie.asset("assets/lottie/" + lesson)],
+          children: [
+            const PosterSlider(),
+            Lottie.asset("assets/lottie/$lesson"),
+          ],
         ),
       ),
     );

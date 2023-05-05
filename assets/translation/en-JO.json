@@ -21,5 +21,7 @@
   "WeWillMissYou!" : "We will miss you!",
   "Exit" : "Exit",
   "Cancel" : "Cancel",
-  "Favorites" : "Favorites"
+  "Favorites" : "Favorites",
+  "WrongUsernameOrPassword" : "Wrong username or password",
+  "AnErrorHasOccurred" : "An error has occurred"
 }

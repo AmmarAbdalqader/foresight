@@ -21,5 +21,7 @@
   "WeWillMissYou!" : "سوف نفتقدك!",
   "Exit" : "خروج",
   "Cancel" : "الغاء",
-  "Favorites" : "المفضلة"
+  "Favorites" : "المفضلة",
+  "WrongUsernameOrPassword" : "خطأ في اسم المستخدم او كلمة السر",
+  "AnErrorHasOccurred" : "حصل خطأ ما"
 }

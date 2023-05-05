@@ -5,15 +5,15 @@ import 'package:foresight/Constants/FColors.dart';
 import 'package:foresight/Components/CourseListTile.dart';
 
 class CategoryCourses extends StatelessWidget {
-  CategoryCourses({required this.lesson});
+  const CategoryCourses({super.key, required this.lesson});
 
   final String lesson;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
         child: FAppBar(),
       ),
       backgroundColor: white,
@@ -24,15 +24,15 @@ class CategoryCourses extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 18),
             child: SearchField(
               colorBTN: success,
-              OnPress: () {},
+              onPress: () {},
             ),
           ),
           Expanded(
             child: ListView.separated(
               clipBehavior: Clip.antiAlias,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemCount: 15,
-              separatorBuilder: (context, index) => Divider(
+              separatorBuilder: (context, index) => const Divider(
                 color: black54,
                 indent: 35,
                 endIndent: 35,

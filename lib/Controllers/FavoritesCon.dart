@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 class FavoritesCon extends ChangeNotifier {
-  List FavList = [];
+  List favList = [];
 }

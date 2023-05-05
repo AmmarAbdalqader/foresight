@@ -12,15 +12,18 @@ import 'package:foresight/Pages/CategoryDetails/index.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:foresight/Components/PosterSlider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
-  Widget HeaderWidget(context) {
-    return Container(
+  const HomePage({super.key});
+
+  Widget headerWidget(context) {
+    return SizedBox(
       height: 300,
       child: Stack(
         children: [
           Container(
-            padding: EdgeInsets.all(mainPadding),
+            padding: const EdgeInsets.all(mainPadding),
             width: 1.sw,
             height: 280,
             color: primaryColor,
@@ -29,14 +32,14 @@ class HomePage extends StatelessWidget {
               children: [
                 Text(
                   "LearnEveryThing".tr(),
-                  style: GoogleFonts.jockeyOne(
+                  style: GoogleFonts.tajawal(
                     fontSize: 30,
                     color: white,
                   ),
                 ),
                 Text(
                   "HereInForesight".tr(),
-                  style: GoogleFonts.jockeyOne(
+                  style: GoogleFonts.tajawal(
                     fontSize: 18,
                     color: greyText,
                   ),
@@ -61,7 +64,7 @@ class HomePage extends StatelessWidget {
             child: Center(
               child: SearchField(
                 colorBTN: success,
-                OnPress: () {},
+                onPress: () {},
               ),
             ),
           ),
@@ -70,8 +73,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget CategoriesWidget(context) {
-    return Container(
+  Widget categoriesWidget(context) {
+    return SizedBox(
       height: 375,
       width: 1.sw,
       child: Column(
@@ -80,7 +83,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: Text(
               "OurCategories".tr(),
-              style: GoogleFonts.jockeyOne(
+              style: GoogleFonts.tajawal(
                 fontSize: 25,
                 color: white,
               ),
@@ -91,7 +94,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               clipBehavior: Clip.antiAlias,
               shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemCount: categoriesLottie.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
@@ -109,7 +112,7 @@ class HomePage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Container(
-                      padding: EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: white,
@@ -119,13 +122,13 @@ class HomePage extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Lottie.asset(
-                              "assets/lottie/" + categoriesLottie[index],
+                              "assets/lottie/${categoriesLottie[index]}",
                               width: 200,
                             ),
                           ),
                           Text(
                             categoriesLottie[index].split(".")[0].tr(),
-                            style: GoogleFonts.jockeyOne(
+                            style: GoogleFonts.tajawal(
                               fontSize: 18,
                             ),
                           ),
@@ -137,7 +140,7 @@ class HomePage extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
         ],
@@ -145,10 +148,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget WallpaperWidget(context) {
-    return Container(
+  Widget wallpaperWidget(context) {
+    return SizedBox(
       width: 1.sw,
-      child: Image(
+      child: const Image(
         image: AssetImage("assets/images/foresight.jpg"), //  chart.png
       ),
     );
@@ -158,27 +161,32 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return await ExitDialog(
+        return await exitDialog(
           context,
           "AreYouSureToExit",
           "WeWillMissYou!",
-          () => exit(0),
+          () {
+            SharedPreferences.getInstance().then((sp) {
+              sp.setInt("UserID", 0);
+            });
+            exit(0);
+          },
           'Exit',
         );
       },
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60),
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
           child: FAppBar(),
         ),
-        drawer: FDrawer(),
+        drawer: const FDrawer(),
         backgroundColor: mainColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
-              HeaderWidget(context),
-              CategoriesWidget(context),
-              PosterSlider(),
+              headerWidget(context),
+              categoriesWidget(context),
+              const PosterSlider(),
             ],
           ),
         ),

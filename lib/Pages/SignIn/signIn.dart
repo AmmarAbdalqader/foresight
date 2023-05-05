@@ -1,18 +1,20 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Controllers/UserCon.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SignIn extends StatelessWidget {
-  final TextEditingController usernameCon = TextEditingController();
-  final TextEditingController passwordCon = TextEditingController();
+  const SignIn({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var userCon = context.watch<UserCon>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: primaryColor,
         ),
         child: Column(
@@ -22,20 +24,20 @@ class SignIn extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 45),
               child: Text(
                 "Foresight",
-                style: GoogleFonts.jockeyOne(
+                style: GoogleFonts.tajawal(
                   color: white,
-                  fontSize: 45,
+                  fontSize: 35,
                   letterSpacing: 3.5,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(18),
-                margin: EdgeInsets.all(18),
+                padding: const EdgeInsets.all(18),
+                margin: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
                   color: white,
                   borderRadius: BorderRadius.circular(24),
@@ -45,98 +47,89 @@ class SignIn extends StatelessWidget {
                   children: [
                     Text(
                       "SignIn".tr(),
-                      style: GoogleFonts.jockeyOne(
+                      style: GoogleFonts.tajawal(
                         color: mainColor,
-                        fontSize: 35,
+                        fontSize: 26,
                         letterSpacing: 1.5,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     TextFormField(
-                      controller: usernameCon,
+                      controller: userCon.usernameCon,
                       decoration: InputDecoration(
+                        icon: const Icon(Icons.person),
+                        iconColor: black54,
                         border: InputBorder.none,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: black54),
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: black54),
                         ),
                         hintText: "Username".tr(),
                       ),
-                      style: GoogleFonts.jockeyOne(
-                        fontSize: 20,
-                        color: Colors.black,
+                      style: GoogleFonts.tajawal(
+                        fontSize: 16,
+                        color: black,
                       ),
-                      onFieldSubmitted: (e) {
-                        if (e.trim().isNotEmpty &&
-                            passwordCon.text.trim().isNotEmpty) {
-                          Navigator.pushReplacementNamed(context, "HomePage");
-                        }
-                      },
+                      onFieldSubmitted: (e) async =>
+                          await userCon.signIn(context),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 18,
                     ),
                     TextFormField(
-                      controller: passwordCon,
-                      obscureText: true,
+                      controller: userCon.passwordCon,
+                      obscureText: userCon.obscureText,
                       decoration: InputDecoration(
+                        icon: const Icon(Icons.password),
+                        iconColor: black54,
                         border: InputBorder.none,
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: black54),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black54),
                         ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: black54),
                         ),
                         hintText: "Password".tr(),
                       ),
-                      style: GoogleFonts.jockeyOne(
-                        fontSize: 20,
-                        color: Colors.black,
+                      style: GoogleFonts.tajawal(
+                        fontSize: 16,
+                        color: black,
                       ),
-                      onFieldSubmitted: (e) {
-                        if (usernameCon.text.trim().isNotEmpty &&
-                            e.trim().isNotEmpty) {
-                          Navigator.pushReplacementNamed(context, "HomePage");
-                        }
-                      },
+                      onFieldSubmitted: (e) async =>
+                          await userCon.signIn(context),
                     ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    userCon.isLoading
+                        ? const CircularProgressIndicator(
+                            color: mainColor,
+                          )
+                        : ElevatedButton(
+                            onPressed: () async =>
+                                await userCon.signIn(context),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: mainColor,
+                              textStyle: GoogleFonts.tajawal(
+                                color: white,
+                                fontSize: 22,
+                              ),
+                              minimumSize: const Size(150, 50),
+                            ),
+                            child: Text(
+                              "SignIn".tr(),
+                            ),
+                          ),
                     const SizedBox(
                       height: 12.5,
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () async {},
                       child: Text(
                         "ForgetYourPassword?".tr(),
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 12.5,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // if (usernameCon.text.trim().isNotEmpty &&
-                        //     passwordCon.text.trim().isNotEmpty) {
-                        Navigator.pushReplacementNamed(context, "HomePage");
-                        // }
-                      },
-                      child: Text(
-                        "SignIn".tr(),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: mainColor,
-                        textStyle: GoogleFonts.jockeyOne(
-                          color: white,
-                          fontSize: 25,
-                          letterSpacing: 1.2,
-                        ),
-                        minimumSize: Size(150, 50),
+                        style: const TextStyle(fontSize: 14),
                       ),
                     ),
                     const SizedBox(
@@ -146,17 +139,29 @@ class SignIn extends StatelessWidget {
                       onPressed: () {},
                       child: Text(
                         "RegisterNow!".tr(),
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       ),
                     ),
-                    Spacer(),
-                    Spacer(),
-                    Spacer(),
+                    const Spacer(),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () async {
+                        if ("CurrLang".tr() == "ar") {
+                          await context.setLocale(const Locale('en', 'JO'));
+                        } else {
+                          await context.setLocale(const Locale('ar', 'JO'));
+                        }
+                      },
+                      icon: const Icon(
+                        Icons.translate,
+                      ),
+                    ),
+                    const Spacer(),
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 65,
             ),
           ],

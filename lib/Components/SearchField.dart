@@ -7,11 +7,12 @@ import '../Constants/FColors.dart';
 class SearchField extends StatelessWidget {
   final String hint;
   final Color colorBTN;
-  final VoidCallback OnPress;
+  final VoidCallback onPress;
 
-  SearchField({
+  const SearchField({
+    super.key,
     required this.colorBTN,
-    required this.OnPress,
+    required this.onPress,
     this.hint = "Search...",
   });
   @override
@@ -33,12 +34,12 @@ class SearchField extends StatelessWidget {
               color: colorBTN,
             ),
             child: IconButton(
-              onPressed: OnPress,
-              icon: Icon(Icons.search, color: white),
+              onPressed: onPress,
+              icon: const Icon(Icons.search, color: white),
             ),
           ),
         ),
-        style: GoogleFonts.jockeyOne(
+        style: GoogleFonts.tajawal(
           fontSize: 20,
           color: Colors.black,
         ),

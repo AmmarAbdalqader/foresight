@@ -1,49 +1,109 @@
 import 'dart:convert';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:foresight/Constants/AppConfig.dart';
 import 'package:foresight/Helpers/API.dart';
 import 'package:foresight/Helpers/HTTP.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../Constants/FColors.dart';
 
 class User {
-  final int ID;
-  final String Name;
-  final String Username;
-  final String Password;
+  final int id;
+  final String name;
+  final String username;
+  final String password;
+  final String? photo;
+  final DateTime signUpDate;
+  final String? email;
 
-  User(
-      {required this.ID,
-      required this.Name,
-      required this.Username,
-      required this.Password});
+  const User({
+    required this.id,
+    required this.name,
+    required this.username,
+    required this.password,
+    required this.photo,
+    required this.signUpDate,
+    required this.email,
+  });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        ID: json["ID"],
-        Name: json["Name"],
-        Username: json["Username"],
-        Password: json["Password"],
+        id: json["ID"],
+        name: json["Name"],
+        username: json["Username"],
+        password: json["Password"],
+        photo: json["Photo"],
+        signUpDate: DateTime.parse(json["SignupDate"].toString()),
+        email: json["Email"],
       );
 
   Map toMap() => {
-        "ID": ID,
-        "Name": Name,
-        "Username": Username,
-        "Password": Password,
+        "ID": id,
+        "Name": name,
+        "Username": username,
+        "Password": password,
       };
 
-  static Future<User?> signIn(String username, String password) async {
-    User? user = null;
-
-    var res = await HTTP
-        .get(AppConfig.URL + API.signIn + "/$username" + "/$password");
-
-    if (res.statusCode == 200) {
-      user = json.decode(utf8.decode(res.bodyBytes));
+  static Future<User?> signIn(context, String username, String password) async {
+    User? user;
+    try {
+      var res = await HTTP.post(AppConfig.url + API.signIn,
+          {"username": username.trim(), "password": password});
+      if (res.statusCode == 200) {
+        user = User.fromJson(json.decode(res.body));
+        SharedPreferences.getInstance().then((sp) async {
+          await sp.setInt("UserID", user!.id);
+        });
+      } else if (res.statusCode == 444 && res.body.contains("Not found User")) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: danger,
+            content: ListTile(
+              title: Text(
+                "WrongUsernameOrPassword".tr(),
+                style: const TextStyle(color: white),
+              ),
+              trailing: const Icon(
+                Icons.error,
+                color: white,
+              ),
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: danger,
+          content: ListTile(
+            title: Text(
+              "AnErrorHasOccurred".tr(),
+              style: const TextStyle(color: white),
+            ),
+            trailing: const Icon(
+              Icons.error,
+              color: white,
+            ),
+          ),
+        ),
+      );
     }
+    return user;
+  }
 
+  static Future<User?> getUserByID(context, int userID) async {
+    User? user;
+    var res = await HTTP.get("${AppConfig.url}${API.getByID}$userID");
+    if (res.statusCode == 200) {
+      user = User.fromJson(json.decode(res.body));
+      SharedPreferences.getInstance().then((sp) {
+        sp.setInt("UserID", user!.id);
+      });
+    }
     return user;
   }
 
   static Future<bool> signUp(User user) async {
-    var res = await HTTP.post(AppConfig.URL + API.signUp, user.toMap());
+    var res = await HTTP.post(AppConfig.url + API.signUp, user.toMap());
 
     if (res.statusCode == 200) {
       // TODO

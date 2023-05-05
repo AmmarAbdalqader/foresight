@@ -3,9 +3,11 @@ import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:foresight/Constants/FColors.dart';
 
 class PosterSlider extends StatelessWidget {
+  const PosterSlider({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return ImageSlideshow(
+    return const ImageSlideshow(
       height: 250,
       indicatorColor: primaryColor,
       autoPlayInterval: 5000,

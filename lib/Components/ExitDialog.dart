@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Future ExitDialog(context, String title, String subTitle, VoidCallback onClick,
+Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
     String okBTN) async {
   return showDialog<void>(
     context: context,
@@ -12,46 +12,46 @@ Future ExitDialog(context, String title, String subTitle, VoidCallback onClick,
       return AlertDialog(
         backgroundColor: eeeeee,
         title: Center(child: Text(title.tr())),
-        titleTextStyle: GoogleFonts.jockeyOne(
+        titleTextStyle: GoogleFonts.tajawal(
           fontSize: 25,
           color: black,
         ),
-        contentPadding: EdgeInsets.all(35),
+        contentPadding: const EdgeInsets.all(35),
         content: Text(
           subTitle.tr(),
           textAlign: TextAlign.center,
         ),
-        contentTextStyle: GoogleFonts.jockeyOne(
+        contentTextStyle: GoogleFonts.tajawal(
           fontSize: 20,
           color: black54,
         ),
         actions: [
           ElevatedButton(
-            child: Text(
-              okBTN.tr(),
-              style: GoogleFonts.jockeyOne(
-                fontSize: 20,
-                color: white,
-              ),
-            ),
             onPressed: onClick,
             style: ElevatedButton.styleFrom(
               backgroundColor: success,
             ),
-          ),
-          ElevatedButton(
             child: Text(
-              'Cancel'.tr(),
-              style: GoogleFonts.jockeyOne(
+              okBTN.tr(),
+              style: GoogleFonts.tajawal(
                 fontSize: 20,
                 color: white,
               ),
             ),
+          ),
+          ElevatedButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: danger,
+            ),
+            child: Text(
+              'Cancel'.tr(),
+              style: GoogleFonts.tajawal(
+                fontSize: 20,
+                color: white,
+              ),
             ),
           ),
         ],
