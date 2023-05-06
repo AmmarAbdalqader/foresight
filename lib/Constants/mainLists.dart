@@ -1,10 +1,3 @@
-List<String> categoriesLottie = [
-  "Programming.json",
-  "Sports.json",
-  "Cooking.json",
-  "Languages.json",
-];
-
 List<List<String>> allLottie = [
   programmingLottie,
   sportsLottie,

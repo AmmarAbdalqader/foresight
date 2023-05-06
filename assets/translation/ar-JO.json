@@ -26,6 +26,8 @@
   "AnErrorHasOccurred" : "حصل خطأ ما",
   "createAccount" : "لا تمتلك حساب؟",
   "Ops" : "اوبس!",
-  "InputAllFields" : "تأكد من ادخال اسم المستخدم و كلمة السر",
-  "CheckYourInternet" : "تأكد من اتصالك بالانترنت"
+  "InputAllFields" : "تأكد من ادخال اسم المستخدم و كلمة المرور",
+  "CheckYourInternet" : "تأكد من اتصالك بالانترنت",
+  "InputUsername" : "ادخل اسم المستخدم",
+  "InputPassword" : "ادخل كلمة المرور"
 }

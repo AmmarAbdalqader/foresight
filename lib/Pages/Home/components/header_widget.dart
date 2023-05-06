@@ -24,13 +24,15 @@ Widget headerWidget(context) {
                 style: GoogleFonts.tajawal(
                   fontSize: 30,
                   color: white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 "HereInForesight".tr(),
                 style: GoogleFonts.tajawal(
-                  fontSize: 18,
+                  fontSize: 20,
                   color: greyText,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               Row(

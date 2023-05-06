@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:foresight/Constants/FColors.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
 
@@ -30,6 +31,10 @@ class CourseListTile extends StatelessWidget {
             Expanded(
               child: Text(
                 lesson.split(".")[0],
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: black,
+                ),
               ),
             ),
             RatingBar.builder(
@@ -56,7 +61,10 @@ class CourseListTile extends StatelessWidget {
             ),
             Text(
               lesson.split(".")[0],
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(
+                fontSize: 16,
+                color: black54,
+              ),
             ),
             const SizedBox(
               height: 8,
@@ -72,7 +80,10 @@ class CourseListTile extends StatelessWidget {
                 ),
                 Text(
                   "Ammar Abdalqader", // tutor
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: black54,
+                  ),
                 ),
               ],
             ),

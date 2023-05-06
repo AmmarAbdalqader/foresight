@@ -6,8 +6,14 @@ import '../Components/FSnackBar.dart';
 
 class UserCon extends ChangeNotifier {
   User? user;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   final TextEditingController usernameCon = TextEditingController();
   final TextEditingController passwordCon = TextEditingController();
+
+  final TextEditingController emailCon = TextEditingController();
+  final TextEditingController nameCon = TextEditingController();
+
   bool isLoading = false;
   bool obscureText = true;
 
@@ -21,10 +27,16 @@ class UserCon extends ChangeNotifier {
     notifyListeners();
   }
 
+  void profile() {
+    passwordCon.text = user!.password;
+    nameCon.text = user!.name;
+    emailCon.text = user!.email!;
+    notifyListeners();
+  }
+
   Future signIn(context) async {
     FocusScope.of(context).requestFocus(FocusNode());
-    if (usernameCon.text.trim().isNotEmpty &&
-        passwordCon.text.trim().isNotEmpty) {
+    if (formKey.currentState!.validate()) {
       loading();
       user = await User.signIn(context, usernameCon.text, passwordCon.text);
       if (user != null) {

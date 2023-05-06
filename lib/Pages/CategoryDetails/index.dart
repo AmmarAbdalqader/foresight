@@ -30,8 +30,9 @@ class CategoryDetails extends StatelessWidget {
           Text(
             category.tr(),
             style: GoogleFonts.tajawal(
-              fontSize: 30,
+              fontSize: 26,
               color: primaryColor,
+              fontWeight: FontWeight.w900,
             ),
           ),
           const SizedBox(
@@ -42,7 +43,9 @@ class CategoryDetails extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50), color: black54),
+                  borderRadius: BorderRadius.circular(50),
+                  color: black54,
+                ),
                 child: SizedBox(
                   height: 5,
                   width: .85.sw,
@@ -102,7 +105,10 @@ class CategoryDetails extends StatelessWidget {
                         ),
                         Text(
                           categoryList[index].split(".")[0],
-                          style: GoogleFonts.tajawal(fontSize: 22),
+                          style: GoogleFonts.tajawal(
+                            fontSize: 22,
+                            color: black,
+                          ),
                         ),
                       ],
                     ),

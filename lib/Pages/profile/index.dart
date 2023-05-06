@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +12,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO Page
     var userCon = context.read<UserCon>();
     return Scaffold(
       appBar: const PreferredSize(
@@ -38,6 +40,25 @@ class Profile extends StatelessWidget {
               color: mainColor,
               fontSize: 35,
               fontWeight: FontWeight.w900,
+            ),
+          ),
+          TextFormField(
+            controller: userCon.passwordCon,
+            decoration: InputDecoration(
+              icon: const Icon(Icons.password),
+              iconColor: black54,
+              border: InputBorder.none,
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: black54),
+              ),
+              enabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: black54),
+              ),
+              hintText: "Password".tr(),
+            ),
+            style: GoogleFonts.tajawal(
+              fontSize: 16,
+              color: black,
             ),
           ),
           const Spacer(flex: 5),

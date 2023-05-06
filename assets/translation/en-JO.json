@@ -27,5 +27,7 @@
   "createAccount" : "Don't have an account?",
   "Ops" : "Ops!",
   "InputAllFields" : "Make sure to input username and password",
-  "CheckYourInternet" : "Check your internet connection"
+  "CheckYourInternet" : "Check your internet connection",
+  "InputUsername" : "Input username",
+  "InputPassword" : "Input password"
 }
