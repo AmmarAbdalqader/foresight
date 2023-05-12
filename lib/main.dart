@@ -6,6 +6,7 @@ import 'package:foresight/Controllers/UserCon.dart';
 import 'package:foresight/Pages/CourseDetails/index.dart';
 import 'package:foresight/Pages/Home/index.dart';
 import 'package:foresight/Pages/SignIn/signIn.dart';
+import 'package:foresight/Pages/SignUp/index.dart';
 import 'package:foresight/Pages/Splash.dart';
 import 'package:foresight/Pages/profile/index.dart';
 import 'package:provider/provider.dart';
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
             routes: {
               '/': (context) => const Splash(),
               'SignIn': (context) => const SignIn(),
+              'SignUp': (context) => const SignUp(),
               'HomePage': (context) => const HomePage(),
               'profile': (context) => const Profile(),
               'CategoryCourses': (context) => CategoryCourses(

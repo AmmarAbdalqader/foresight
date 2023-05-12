@@ -30,4 +30,18 @@ class HTTP {
 
     return response;
   }
+
+  static Future<http.Response> patch(String url, Map body) async {
+    log(url);
+    log(jsonEncode(body));
+
+    final response = await http.patch(Uri.parse(url),
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: jsonEncode(body));
+    log(response.statusCode.toString());
+
+    return response;
+  }
 }

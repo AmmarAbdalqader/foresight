@@ -29,5 +29,18 @@
   "InputAllFields" : "Make sure to input username and password",
   "CheckYourInternet" : "Check your internet connection",
   "InputUsername" : "Input username",
-  "InputPassword" : "Input password"
+  "InputPassword" : "Input password",
+  "UsernameIsUsed": "Username is used",
+  "InputName": "Input name",
+  "InputEmail": "Input email",
+  "SignUp": "Sign up",
+  "Name": "Name",
+  "Email": "Email",
+  "Password6len": "Password must be at least 6 characters",
+  "Great": "Great",
+  "NewUserHasBeenCreated": "New user has been created\nSign in to proceed",
+  "Submit": "Submit",
+  "EnterSecretPassword": "Enter secret password",
+  "WrongPassword": "Wrong password",
+  "AllUsers": "All users"
 }

@@ -41,7 +41,7 @@ Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.pop(context);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: danger,

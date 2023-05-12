@@ -1,0 +1,25 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import '../Constants/FColors.dart';
+
+InputDecoration inputDecoration(String hint, IconData icon) => InputDecoration(
+      icon: Icon(icon),
+      iconColor: black54,
+      errorStyle: const TextStyle(
+        fontSize: 12,
+      ),
+      border: InputBorder.none,
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: black54),
+      ),
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: black54),
+      ),
+      errorBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: danger),
+      ),
+      focusedErrorBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: danger),
+      ),
+      hintText: hint.tr(),
+    );

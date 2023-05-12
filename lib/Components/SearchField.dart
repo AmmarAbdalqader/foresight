@@ -21,16 +21,17 @@ class SearchField extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       width: 0.85.sw,
       decoration: BoxDecoration(
-          color: white,
-          borderRadius: BorderRadius.circular(18),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 3,
-              offset: Offset(2, 4),
-              spreadRadius: 3,
-            ),
-          ]),
+        color: white,
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 3,
+            offset: Offset(2, 4),
+            spreadRadius: 3,
+          ),
+        ],
+      ),
       child: TextFormField(
         decoration: InputDecoration(
           border: InputBorder.none,

@@ -34,7 +34,30 @@ class Splash extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            Lottie.asset("assets/lottie/loadingDots.json", width: 200),
+            Lottie.asset(
+              "assets/lottie/loadingDots.json",
+              width: 200,
+              delegates: LottieDelegates(
+                values: [
+                  ValueDelegate.colorFilter(
+                    ['Shape Layer 4', '**'],
+                    value: const ColorFilter.mode(primaryColor, BlendMode.src),
+                  ),
+                  ValueDelegate.colorFilter(
+                    ['Shape Layer 3', '**'],
+                    value: const ColorFilter.mode(eeeeee, BlendMode.src),
+                  ),
+                  ValueDelegate.colorFilter(
+                    ['Shape Layer 2', '**'],
+                    value: const ColorFilter.mode(primaryColor, BlendMode.src),
+                  ),
+                  ValueDelegate.colorFilter(
+                    ['Shape Layer 1', '**'],
+                    value: const ColorFilter.mode(mainColor, BlendMode.src),
+                  ),
+                ],
+              ),
+            ),
             const Spacer(),
             const Spacer(),
           ],

@@ -39,12 +39,14 @@ class User {
         "Name": name,
         "Username": username,
         "Password": password,
+        "Photo": photo,
+        "Email": email,
       };
 
   static Future<User?> signIn(context, String username, String password) async {
     User? user;
     try {
-      var res = await HTTP.post(AppConfig.url + API.signIn,
+      var res = await HTTP.patch(AppConfig.url + API.signIn,
           {"username": username.trim(), "password": password});
       if (res.statusCode == 200) {
         user = User.fromJson(json.decode(res.body));
@@ -53,9 +55,12 @@ class User {
         });
       } else if (res.statusCode == 444 && res.body.contains("Not found User")) {
         await FSnackBar(context, 'Ops', 'WrongUsernameOrPassword');
+      } else {
+        await FSnackBar(context, 'AnErrorHasOccurred',
+            "${res.statusCode} - ${res.reasonPhrase!}");
       }
     } catch (e) {
-      await FSnackBar(context, 'AnErrorHasOccurred', 'CheckYourInternet');
+      await FSnackBar(context, 'AnErrorHasOccurred', 'CheckYourInternet \n $e');
     }
     return user;
   }
@@ -72,13 +77,32 @@ class User {
     return user;
   }
 
-  static Future<bool> signUp(User user) async {
-    var res = await HTTP.post(AppConfig.url + API.signUp, user.toMap());
+  static Future<int> signUp(context, User user) async {
+    try {
+      var res = await HTTP.patch(AppConfig.url + API.signUp, user.toMap());
 
-    if (res.statusCode == 200) {
-      // TODO
+      if (res.statusCode == 200 && res.reasonPhrase!.contains("OK")) {
+        return 1;
+      } else if (res.statusCode == 555 &&
+          res.reasonPhrase!.contains("unknown")) {
+        return 2;
+      } else {
+        return 0;
+      }
+    } catch (e) {
+      await FSnackBar(context, 'AnErrorHasOccurred', 'CheckYourInternet \n $e');
+      return -1;
     }
+  }
 
-    return true;
+  static Future<List<User>> getAllUsers(context) async {
+    List<User> list = [];
+    var res = await HTTP.get("${AppConfig.url}${API.getAllUsers}");
+    if (res.statusCode == 200) {
+      list = (json.decode(utf8.decode(res.bodyBytes)) as List)
+          .map((e) => User.fromJson(e))
+          .toList();
+    }
+    return list;
   }
 }
