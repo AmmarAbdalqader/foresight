@@ -70,8 +70,8 @@ class CourseListTile extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            Row(
-              children: const [
+            const Row(
+              children: [
                 Icon(
                   Icons.person,
                   size: 20,

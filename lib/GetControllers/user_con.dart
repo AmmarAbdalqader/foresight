@@ -38,8 +38,8 @@ class UserCon extends GetxController {
   var usernameFocus = FocusNode().obs;
   var passwordFocus = FocusNode().obs;
 
-  RegExp emailRegex = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  static RegExp emailRegex = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
   String? token;
 
