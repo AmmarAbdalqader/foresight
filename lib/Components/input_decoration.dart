@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import '../Constants/FColors.dart';
 
@@ -21,5 +21,5 @@ InputDecoration inputDecoration(String hint, IconData icon) => InputDecoration(
       focusedErrorBorder: const UnderlineInputBorder(
         borderSide: BorderSide(color: danger),
       ),
-      hintText: hint.tr(),
+      hintText: hint.tr,
     );

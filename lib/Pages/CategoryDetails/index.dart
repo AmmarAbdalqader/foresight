@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foresight/Components/FAppBar.dart';
@@ -8,11 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class CategoryDetails extends StatelessWidget {
-  final String category;
-  final List<String> categoryList;
+  final String category = Get.arguments[0];
+  final List<String> categoryList = Get.arguments[1];
 
-  const CategoryDetails(
-      {super.key, required this.category, required this.categoryList});
+  CategoryDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class CategoryDetails extends StatelessWidget {
             height: 15,
           ),
           Text(
-            category.tr(),
+            category.tr,
             style: GoogleFonts.tajawal(
               fontSize: 26,
               color: primaryColor,
@@ -73,7 +72,7 @@ class CategoryDetails extends StatelessWidget {
                     infoDialog(context, categoryList[index]);
                   },
                   onTap: () {
-                    Navigator.pushNamed(context, "CategoryCourses",
+                    Get.toNamed("/CategoryCourses",
                         arguments: categoryList[index]);
                   },
                   child: Container(

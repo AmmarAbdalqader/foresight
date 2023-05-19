@@ -3,11 +3,12 @@ import 'package:foresight/Components/FAppBar.dart';
 import 'package:foresight/Components/SearchField.dart';
 import 'package:foresight/Constants/FColors.dart';
 import 'package:foresight/Components/CourseListTile.dart';
+import 'package:get/get.dart';
 
 class CategoryCourses extends StatelessWidget {
-  const CategoryCourses({super.key, required this.lesson});
+  CategoryCourses({super.key});
 
-  final String lesson;
+  final String lesson = Get.arguments;
 
   @override
   Widget build(BuildContext context) {

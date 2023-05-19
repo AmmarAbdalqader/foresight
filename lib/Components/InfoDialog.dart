@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,14 +22,13 @@ Future infoDialog(context, String lesson) async {
         actionsAlignment: MainAxisAlignment.center,
         actions: [
           ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+            onPressed: () => Get.back(),
+            // },
             style: ElevatedButton.styleFrom(
               backgroundColor: niceGrey,
             ),
             child: Text(
-              'OK'.tr(),
+              'OK'.tr,
               style: GoogleFonts.tajawal(
                 fontSize: 20,
                 color: white,

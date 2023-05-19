@@ -3,7 +3,7 @@ import 'package:foresight/Components/FSnackBar.dart';
 import 'package:foresight/Constants/AppConfig.dart';
 import 'package:foresight/Helpers/API.dart';
 import 'package:foresight/Helpers/HTTP.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class User {
   final int id;
@@ -50,29 +50,29 @@ class User {
           {"username": username.trim(), "password": password});
       if (res.statusCode == 200) {
         user = User.fromJson(json.decode(res.body));
-        SharedPreferences.getInstance().then((sp) async {
-          await sp.setInt("UserID", user!.id);
-        });
+
+        final storage = GetStorage();
+        await storage.write("UserID", user.id);
       } else if (res.statusCode == 444 && res.body.contains("Not found User")) {
-        await FSnackBar(context, 'Ops', 'WrongUsernameOrPassword');
+        await errorFSnackBar(context, 'Ops', 'WrongUsernameOrPassword');
       } else {
-        await FSnackBar(context, 'AnErrorHasOccurred',
+        await errorFSnackBar(context, 'AnErrorHasOccurred',
             "${res.statusCode} - ${res.reasonPhrase!}");
       }
     } catch (e) {
-      await FSnackBar(context, 'AnErrorHasOccurred', 'CheckYourInternet \n $e');
+      await errorFSnackBar(
+          context, 'AnErrorHasOccurred', 'CheckYourInternet \n $e');
     }
     return user;
   }
 
-  static Future<User?> getUserByID(context, int userID) async {
+  static Future<User?> getUserByID(int userID) async {
     User? user;
     var res = await HTTP.get("${AppConfig.url}${API.getByID}$userID");
     if (res.statusCode == 200) {
       user = User.fromJson(json.decode(res.body));
-      SharedPreferences.getInstance().then((sp) {
-        sp.setInt("UserID", user!.id);
-      });
+      final storage = GetStorage();
+      await storage.write("UserID", user.id);
     }
     return user;
   }
@@ -90,7 +90,8 @@ class User {
         return 0;
       }
     } catch (e) {
-      await FSnackBar(context, 'AnErrorHasOccurred', 'CheckYourInternet \n $e');
+      await errorFSnackBar(
+          context, 'AnErrorHasOccurred', 'CheckYourInternet \n $e');
       return -1;
     }
   }

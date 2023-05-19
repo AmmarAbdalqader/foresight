@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
-import 'package:foresight/Controllers/UserCon.dart';
+import 'package:foresight/GetControllers/user_con.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:core';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends GetView<UserCon> {
   const Splash({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var userCon = context.watch<UserCon>();
+    Get.put(UserCon(), permanent: true);
     Future.delayed(
-      const Duration(seconds: 1),
-      () async => await userCon.splash(context),
+      const Duration(seconds: 3),
+      () async => await controller.splash(),
     );
     return Scaffold(
       backgroundColor: primaryColor.withOpacity(0.5),
@@ -33,7 +33,9 @@ class Splash extends StatelessWidget {
                 fontSize: 50,
               ),
             ),
-            const Spacer(),
+            const Spacer(
+              flex: 3,
+            ),
             Lottie.asset(
               "assets/lottie/loadingDots.json",
               width: 200,
@@ -58,7 +60,6 @@ class Splash extends StatelessWidget {
                 ],
               ),
             ),
-            const Spacer(),
             const Spacer(),
           ],
         ),

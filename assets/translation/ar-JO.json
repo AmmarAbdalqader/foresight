@@ -42,5 +42,6 @@
   "Submit": "تقديم",
   "EnterSecretPassword": "ادخل الرقم السري",
   "WrongPassword": "الكلمة السرية خطأ",
-  "AllUsers": "جميع المستخدمين"
+  "AllUsers": "جميع المستخدمين",
+  "WrongFormat": "الصيغة خطأ"
 }

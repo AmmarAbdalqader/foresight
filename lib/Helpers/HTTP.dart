@@ -7,10 +7,10 @@ import 'package:retry/retry.dart';
 
 class HTTP {
   static Future<http.Response> get(String url) async {
-    const r = RetryOptions(maxAttempts: 3);
+    const r = RetryOptions(maxAttempts: 5);
     log(url);
     final response = await r.retry(
-      () => http.get(Uri.parse(url)).timeout(const Duration(seconds: 3)),
+      () => http.get(Uri.parse(url)).timeout(const Duration(seconds: 5)),
       retryIf: (e) => e is SocketException || e is TimeoutException,
     );
     log(response.statusCode.toString());

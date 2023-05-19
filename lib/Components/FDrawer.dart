@@ -1,19 +1,19 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foresight/Components/ExitDialog.dart';
 import 'package:foresight/Constants/FColors.dart';
-import 'package:foresight/Controllers/UserCon.dart';
+import 'package:foresight/Constants/flip_locale.dart';
+import 'package:foresight/GetControllers/user_con.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class FDrawer extends StatelessWidget {
   const FDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var userCon = context.read<UserCon>();
+    UserCon userCon = Get.find();
     return Drawer(
       child: Container(
         decoration: const BoxDecoration(
@@ -34,7 +34,7 @@ class FDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () => Navigator.pushNamed(context, "profile"),
+                    onTap: () => Get.toNamed("/Profile"),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +71,7 @@ class FDrawer extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                "Favorites".tr(),
+                "Favorites".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
                   color: white,
@@ -85,19 +85,13 @@ class FDrawer extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                "OtherLang".tr(),
+                "OtherLang".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
                   color: white,
                 ),
               ),
-              onTap: () async {
-                if ("CurrLang".tr() == "ar") {
-                  await context.setLocale(const Locale('en', 'JO'));
-                } else {
-                  await context.setLocale(const Locale('ar', 'JO'));
-                }
-              },
+              onTap: () => FlipLocale.flipLocale(),
               leading: const Icon(
                 Icons.translate,
                 color: white,
@@ -105,7 +99,7 @@ class FDrawer extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                "SignOut".tr(),
+                "SignOut".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
                   color: white,
@@ -115,11 +109,10 @@ class FDrawer extends StatelessWidget {
                 context,
                 "AreYouSureToSignOut",
                 "WeWillMissYou!",
-                () {
-                  SharedPreferences.getInstance().then((sp) {
-                    sp.setInt("UserID", 0);
-                  });
-                  Navigator.pushReplacementNamed(context, "SignIn");
+                () async {
+                  final storage = GetStorage();
+                  await storage.write("UserID", 0);
+                  Get.offNamed('/SignIn');
                 },
                 "SignOut",
               ),

@@ -1,15 +1,15 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-Future FSnackBar(context, String title, String subTitle) async {
+Future errorFSnackBar(context, String title, String subTitle) async {
   final snackBar = SnackBar(
     elevation: 0,
     behavior: SnackBarBehavior.floating,
     backgroundColor: Colors.transparent,
     content: AwesomeSnackbarContent(
-      title: title.tr(),
-      message: subTitle.tr(),
+      title: title.tr,
+      message: subTitle.tr,
       contentType: ContentType.failure,
     ),
   );
@@ -25,8 +25,8 @@ Future successFSnackBar(context, String title, String subTitle) async {
     behavior: SnackBarBehavior.floating,
     backgroundColor: Colors.transparent,
     content: AwesomeSnackbarContent(
-      title: title.tr(),
-      message: subTitle.tr(),
+      title: title.tr,
+      message: subTitle.tr,
       contentType: ContentType.success,
     ),
   );

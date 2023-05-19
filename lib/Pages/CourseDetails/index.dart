@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:foresight/Components/FAppBar.dart';
 import 'package:foresight/Constants/FColors.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:foresight/Components/PosterSlider.dart';
 
 class CourseDetails extends StatelessWidget {
-  const CourseDetails({super.key, required this.lesson});
+  CourseDetails({super.key});
 
-  final String lesson;
+  final String lesson = Get.arguments;
 
   @override
   Widget build(BuildContext context) {

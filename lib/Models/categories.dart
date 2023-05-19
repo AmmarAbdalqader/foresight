@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:foresight/Constants/AppConfig.dart';
+import 'package:foresight/Constants/FColors.dart';
 import 'package:foresight/Helpers/API.dart';
 import 'package:foresight/Helpers/HTTP.dart';
-
-import '../Components/FSnackBar.dart';
+import 'package:get/get.dart';
 
 class Categories {
   final int id;
@@ -25,7 +25,7 @@ class Categories {
         icon: json['Icon'],
       );
 
-  static Future<List<Categories>> getCategories(context, int categoryID) async {
+  static Future<List<Categories>> getCategories(int categoryID) async {
     /// categoryID == 0 ? get all Categories
     List<Categories> list = [];
     try {
@@ -37,7 +37,8 @@ class Categories {
             .toList();
       }
     } catch (e) {
-      await FSnackBar(context, 'AnErrorHasOccurred', 'CheckYourInternet');
+      Get.snackbar('AnErrorHasOccurred', 'CheckYourInternet',
+          backgroundColor: danger, duration: const Duration(seconds: 5));
     }
     return list;
   }

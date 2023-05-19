@@ -42,5 +42,6 @@
   "Submit": "Submit",
   "EnterSecretPassword": "Enter secret password",
   "WrongPassword": "Wrong password",
-  "AllUsers": "All users"
+  "AllUsers": "All users",
+  "WrongFormat": "Wrong format"
 }

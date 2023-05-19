@@ -1,19 +1,17 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:foresight/GetControllers/user_con.dart';
+import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import '../../Components/FAppBar.dart';
 import '../../Constants/FColors.dart';
-import '../../Controllers/UserCon.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // TODO Page
-    var userCon = context.read<UserCon>();
+    UserCon userCon = Get.find();
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
@@ -43,7 +41,7 @@ class Profile extends StatelessWidget {
             ),
           ),
           TextFormField(
-            controller: userCon.passwordCon,
+            controller: userCon.passwordCon.value,
             decoration: InputDecoration(
               icon: const Icon(Icons.password),
               iconColor: black54,
@@ -54,7 +52,7 @@ class Profile extends StatelessWidget {
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: black54),
               ),
-              hintText: "Password".tr(),
+              hintText: "Password".tr,
             ),
             style: GoogleFonts.tajawal(
               fontSize: 16,

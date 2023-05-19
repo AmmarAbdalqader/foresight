@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +35,7 @@ class SearchField extends StatelessWidget {
       child: TextFormField(
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: hint.tr(),
+          hintText: hint.tr,
           icon: Container(
             padding: const EdgeInsets.symmetric(vertical: 15),
             decoration: BoxDecoration(

@@ -1,12 +1,12 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import '../../../Components/SearchField.dart';
-import '../../../Constants/FColors.dart';
+import 'package:foresight/Components/SearchField.dart';
+import 'package:foresight/Constants/FColors.dart';
 
-Widget headerWidget(context) {
+Widget headerWidget() {
   return SizedBox(
     height: 300,
     child: Stack(
@@ -20,7 +20,7 @@ Widget headerWidget(context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "LearnEveryThing".tr(),
+                "LearnEveryThing".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 30,
                   color: white,
@@ -28,7 +28,7 @@ Widget headerWidget(context) {
                 ),
               ),
               Text(
-                "HereInForesight".tr(),
+                "HereInForesight".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
                   color: greyText,

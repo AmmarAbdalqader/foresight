@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
@@ -11,14 +11,14 @@ Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: eeeeee,
-        title: Center(child: Text(title.tr())),
+        title: Center(child: Text(title.tr)),
         titleTextStyle: GoogleFonts.tajawal(
           fontSize: 25,
           color: black,
         ),
         contentPadding: const EdgeInsets.all(35),
         content: Text(
-          subTitle.tr(),
+          subTitle.tr,
           textAlign: TextAlign.center,
         ),
         contentTextStyle: GoogleFonts.tajawal(
@@ -32,7 +32,7 @@ Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
               backgroundColor: success,
             ),
             child: Text(
-              okBTN.tr(),
+              okBTN.tr,
               style: GoogleFonts.tajawal(
                 fontSize: 20,
                 color: white,
@@ -41,13 +41,13 @@ Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.pop(context);
+              Get.back();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: danger,
             ),
             child: Text(
-              'Cancel'.tr(),
+              'Cancel'.tr,
               style: GoogleFonts.tajawal(
                 fontSize: 20,
                 color: white,

@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foresight/Constants/FColors.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/cupertino.dart';
 
 class FAppBar extends StatelessWidget {
   const FAppBar({super.key, this.showUserPhoto = true});
@@ -26,7 +27,7 @@ class FAppBar extends StatelessWidget {
         Visibility(
           visible: showUserPhoto,
           child: IconButton(
-            onPressed: () => Navigator.pushNamed(context, "profile"),
+            onPressed: () => Get.toNamed("/Profile"),
             icon: const Icon(
               CupertinoIcons.person_crop_circle,
               color: white,

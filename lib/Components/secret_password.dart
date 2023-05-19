@@ -1,4 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foresight/Constants/AppConfig.dart';
@@ -15,7 +15,7 @@ Future<String?> secretPasswordDialog(context) {
     builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: white,
-        title: Center(child: Text("EnterSecretPassword".tr())),
+        title: Center(child: Text("EnterSecretPassword".tr)),
         titleTextStyle: GoogleFonts.tajawal(
           fontSize: 21,
           color: black,
@@ -54,13 +54,13 @@ Future<String?> secretPasswordDialog(context) {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.pop(context, passwordCon.text);
+              Get.back(result: passwordCon.text);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: success,
             ),
             child: Text(
-              'Submit'.tr(),
+              'Submit'.tr,
               style: const TextStyle(
                 fontSize: 12,
               ),
@@ -68,13 +68,13 @@ Future<String?> secretPasswordDialog(context) {
           ),
           TextButton(
             onPressed: () {
-              Navigator.pop(context, null);
+              Get.back(result: null);
             },
             style: TextButton.styleFrom(
               foregroundColor: black54,
             ),
             child: Text(
-              'Cancel'.tr(),
+              'Cancel'.tr,
               style: const TextStyle(
                 fontSize: 12,
               ),
@@ -95,7 +95,7 @@ Future secretUsersDialog(context, List<User> allUsers) {
         width: 80.w,
         child: AlertDialog(
           backgroundColor: white,
-          title: Center(child: Text("AllUsers".tr())),
+          title: Center(child: Text("AllUsers".tr)),
           titleTextStyle: GoogleFonts.tajawal(
             fontSize: 21,
             color: black,
@@ -125,14 +125,14 @@ Future secretUsersDialog(context, List<User> allUsers) {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SelectableText(
-                              "${"Username".tr()} : ${user.username}",
+                              "${"Username".tr} : ${user.username}",
                               style: const TextStyle(
                                 color: black54,
                                 fontSize: 13,
                               ),
                             ),
                             SelectableText(
-                              "${"Password".tr()} : ${user.password}",
+                              "${"Password".tr} : ${user.password}",
                               style: const TextStyle(
                                 color: black54,
                                 fontSize: 13,
