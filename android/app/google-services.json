@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "623953660471",
+    "project_id": "foresight-68637",
+    "storage_bucket": "foresight-68637.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:623953660471:android:e6aa2a9ef1a36370cc0db2",
+        "android_client_info": {
+          "package_name": "com.aka.foresight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "623953660471-n7iipjg8j1fl8qj8e9h9pqt7qtki12v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrJsfiIWgj8hJp8CR3sV5xd4scKteshoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "623953660471-n7iipjg8j1fl8qj8e9h9pqt7qtki12v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,10 +1,11 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:foresight/Models/User.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import '../Components/FSnackBar.dart';
-import '../Components/secret_password.dart';
-import '../Constants/AppConfig.dart';
+import 'package:foresight/Components/FSnackBar.dart';
+import 'package:foresight/Components/secret_password.dart';
+import 'package:foresight/Constants/app_config.dart';
 
 class UserCon extends GetxController {
   User? user;
@@ -40,13 +41,16 @@ class UserCon extends GetxController {
   RegExp emailRegex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    super.onInit();
-  }
+  String? token;
+
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  // }
 
   Future splash() async {
+    FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+    token = await firebaseMessaging.getToken();
     final storage = GetStorage();
     int? userID = storage.read("UserID");
     if (userID != null && userID != 0) {
@@ -69,13 +73,16 @@ class UserCon extends GetxController {
     FocusScope.of(context).requestFocus(FocusNode());
     if (formKey.currentState!.validate()) {
       setLoading();
-      user = await User.signIn(
-          context, usernameCon.value.text, passwordCon.value.text);
+      user = await User.signIn(context, {
+        "username": usernameCon.value.text.trim(),
+        "password": passwordCon.value.text,
+        "token": token ?? ""
+      });
+      setLoading();
       if (user != null) {
         clear();
         Get.offNamed('/HomePage');
       }
-      setLoading();
     } else {
       await errorFSnackBar(context, 'Ops', 'InputAllFields');
     }

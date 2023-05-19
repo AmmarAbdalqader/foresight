@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:foresight/Components/FSnackBar.dart';
-import 'package:foresight/Constants/AppConfig.dart';
+import 'package:foresight/Constants/app_config.dart';
 import 'package:foresight/Helpers/API.dart';
 import 'package:foresight/Helpers/HTTP.dart';
 import 'package:get_storage/get_storage.dart';
@@ -43,11 +43,10 @@ class User {
         "Email": email,
       };
 
-  static Future<User?> signIn(context, String username, String password) async {
+  static Future<User?> signIn(context, Map map) async {
     User? user;
     try {
-      var res = await HTTP.patch(AppConfig.url + API.signIn,
-          {"username": username.trim(), "password": password});
+      var res = await HTTP.patch(AppConfig.url + API.signIn, map);
       if (res.statusCode == 200) {
         user = User.fromJson(json.decode(res.body));
 

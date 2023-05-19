@@ -1,21 +1,19 @@
-import 'package:foresight/Pages/CategoryDetails/index.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:foresight/Constants/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foresight/Pages/CourseDetails/index.dart';
-import 'package:foresight/Pages/Home/index.dart';
-import 'package:foresight/Pages/SignIn/signIn.dart';
-import 'package:foresight/Pages/SignUp/index.dart';
-import 'package:foresight/Pages/Splash.dart';
-import 'package:foresight/Pages/profile/index.dart';
 import 'package:get_storage/get_storage.dart';
-import 'Pages/CategoryCourses/index.dart';
 import 'Translation/my_localization.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -43,18 +41,9 @@ class MyApp extends StatelessWidget {
                 Typography.englishLike2018.apply(fontSizeFactor: 1.23.sp),
           ),
           translations: MyLocalization(),
-          locale: const Locale('en', 'JO'),
-          initialRoute: '/',
-          getPages: [
-            GetPage(name: '/', page: () => const Splash()),
-            GetPage(name: '/SignIn', page: () => const SignIn()),
-            GetPage(name: '/SignUp', page: () => const SignUp()),
-            GetPage(name: '/HomePage', page: () => const HomePage()),
-            GetPage(name: '/Profile', page: () => const Profile()),
-            GetPage(name: '/CategoryCourses', page: () => CategoryCourses()),
-            GetPage(name: '/CourseDetails', page: () => CourseDetails()),
-            GetPage(name: '/CategoryDetails', page: () => CategoryDetails()),
-          ],
+          locale: Locale(GetStorage().read("Locale") ?? 'en', 'JO'),
+          getPages: AppRoutes.routes,
+          initialRoute: AppRoutes.routes.first.name,
         );
       },
     );
