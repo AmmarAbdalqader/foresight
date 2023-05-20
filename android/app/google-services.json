@@ -29,6 +29,13 @@
             {
               "client_id": "623953660471-n7iipjg8j1fl8qj8e9h9pqt7qtki12v9.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "623953660471-596eu87l0mkk0cg5u2l8k08vidlck4kc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.aka.foresight"
+              }
             }
           ]
         }

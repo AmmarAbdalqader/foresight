@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../Constants/FColors.dart';
+import '../Constants/app_colors.dart';
 
 InputDecoration inputDecoration(String hint, IconData icon) => InputDecoration(
       icon: Icon(icon),

@@ -1,9 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:foresight/Models/User.dart';
+import 'package:flutter/foundation.dart';
+import 'package:foresight/Models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:foresight/Components/FSnackBar.dart';
+import 'package:foresight/Components/app_snack_bars.dart';
 import 'package:foresight/Components/secret_password.dart';
 import 'package:foresight/Constants/app_config.dart';
 
@@ -41,7 +42,7 @@ class UserCon extends GetxController {
   static RegExp emailRegex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
-  String? token;
+  String? token = "";
 
   // @override
   // void onInit() {
@@ -49,14 +50,16 @@ class UserCon extends GetxController {
   // }
 
   Future splash() async {
-    FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
-    token = await firebaseMessaging.getToken();
+    if (!kIsWeb) {
+      FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
+      token = await firebaseMessaging.getToken();
+    }
     final storage = GetStorage();
     int? userID = storage.read("UserID");
     if (userID != null && userID != 0) {
       await getUserByID(userID);
     } else {
-      Get.offNamed('/SignIn');
+      Get.offNamed('/SignInView');
 
       /// pushReplacementNamed
     }
@@ -65,7 +68,7 @@ class UserCon extends GetxController {
   Future getUserByID(int userID) async {
     user = await User.getUserByID(userID);
     if (user != null) {
-      Get.offNamed('/HomePage');
+      Get.offNamed('/HomeView');
     }
   }
 
@@ -81,7 +84,7 @@ class UserCon extends GetxController {
       setLoading();
       if (user != null) {
         clear();
-        Get.offNamed('/HomePage');
+        Get.offNamed('/HomeView');
       }
     } else {
       await errorFSnackBar(context, 'Ops', 'InputAllFields');

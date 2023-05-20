@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Constants/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
@@ -24,7 +24,7 @@ class CourseListTile extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () {
-          Get.toNamed("/CourseDetails", arguments: lesson);
+          Get.toNamed("/CourseDetailsView", arguments: lesson);
         },
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

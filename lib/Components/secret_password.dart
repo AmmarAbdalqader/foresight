@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foresight/Constants/app_config.dart';
-import 'package:foresight/Models/User.dart';
+import 'package:foresight/Models/user.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../Constants/FColors.dart';
+import '../Constants/app_colors.dart';
 import 'input_decoration.dart';
 
 Future<String?> secretPasswordDialog(context) {

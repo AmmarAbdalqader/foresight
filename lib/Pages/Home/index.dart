@@ -1,18 +1,18 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:foresight/Components/ExitDialog.dart';
-import 'package:foresight/Components/FAppBar.dart';
-import 'package:foresight/Components/FDrawer.dart';
-import 'package:foresight/Constants/FColors.dart';
-import 'package:foresight/Components/PosterSlider.dart';
+import 'package:foresight/Components/exit_dialog.dart';
+import 'package:foresight/Components/app_app_bar.dart';
+import 'package:foresight/Components/app_drawer.dart';
+import 'package:foresight/Constants/app_colors.dart';
+import 'package:foresight/Components/poster_slider.dart';
 import 'package:foresight/GetControllers/categories_con.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'components/categories_widget.dart';
 import 'components/header_widget.dart';
 
-class HomePage extends GetView<CategoriesCon> {
-  const HomePage({super.key});
+class HomeView extends GetView<CategoriesCon> {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {

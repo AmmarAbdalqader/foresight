@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foresight/Components/ExitDialog.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Components/exit_dialog.dart';
+import 'package:foresight/Constants/app_colors.dart';
 import 'package:foresight/Constants/flip_locale.dart';
 import 'package:foresight/GetControllers/user_con.dart';
 import 'package:get/get.dart';
@@ -26,7 +26,7 @@ class FDrawer extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(
-              height: 15,
+              height: 16,
             ),
             Container(
               height: 120,
@@ -34,7 +34,7 @@ class FDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () => Get.toNamed("/Profile"),
+                    onTap: () => Get.toNamed("/ProfileView"),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +112,7 @@ class FDrawer extends StatelessWidget {
                 () async {
                   final storage = GetStorage();
                   await storage.write("UserID", 0);
-                  Get.offNamed('/SignIn');
+                  Get.offNamed('/SignInView');
                 },
                 "SignOut",
               ),

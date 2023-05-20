@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:foresight/Components/SearchField.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Components/search_field.dart';
+import 'package:foresight/Constants/app_colors.dart';
 
 Widget headerWidget() {
   return SizedBox(

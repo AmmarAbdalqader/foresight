@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Constants/app_colors.dart';
 import 'package:foresight/GetControllers/user_con.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:core';
 import 'package:lottie/lottie.dart';
 
-class Splash extends GetView<UserCon> {
-  const Splash({super.key});
+class SplashView extends GetView<UserCon> {
+  const SplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Splash extends GetView<UserCon> {
       () async => await controller.splash(),
     );
     return Scaffold(
-      backgroundColor: primaryColor.withOpacity(0.5),
+      backgroundColor: mainColor.withOpacity(0.5),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

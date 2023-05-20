@@ -1,17 +1,18 @@
+import 'package:foresight/Constants/flip_locale.dart';
+import 'package:foresight/Models/categories.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foresight/Components/FAppBar.dart';
-import 'package:foresight/Components/InfoDialog.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Components/app_app_bar.dart';
+import 'package:foresight/Components/info_dialog.dart';
+import 'package:foresight/Constants/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
-class CategoryDetails extends StatelessWidget {
-  final String category = Get.arguments[0];
+class CategoryDetailsView extends StatelessWidget {
+  final Categories category = Get.arguments[0];
   final List<String> categoryList = Get.arguments[1];
 
-  CategoryDetails({super.key});
+  CategoryDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,36 +25,22 @@ class CategoryDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(
-            height: 15,
+            height: 16,
           ),
           Text(
-            category.tr,
+            FlipLocale.isLocaleAr() ? category.nameAR : category.nameEN,
             style: GoogleFonts.tajawal(
               fontSize: 26,
               color: primaryColor,
               fontWeight: FontWeight.w900,
             ),
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: black54,
-                ),
-                child: SizedBox(
-                  height: 5,
-                  width: .85.sw,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
+          const Divider(
+            height: 35,
+            color: black54,
+            endIndent: 30,
+            indent: 30,
+            thickness: 3.8,
           ),
           Expanded(
             child: GridView.builder(
@@ -67,12 +54,13 @@ class CategoryDetails extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               shrinkWrap: true,
               itemBuilder: (context, index) {
+                /// TODO make this a component
                 return GestureDetector(
                   onLongPress: () {
                     infoDialog(context, categoryList[index]);
                   },
                   onTap: () {
-                    Get.toNamed("/CategoryCourses",
+                    Get.toNamed("/CategoryCoursesView",
                         arguments: categoryList[index]);
                   },
                   child: Container(

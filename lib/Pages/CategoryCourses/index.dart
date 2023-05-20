@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foresight/Components/FAppBar.dart';
-import 'package:foresight/Components/SearchField.dart';
-import 'package:foresight/Constants/FColors.dart';
-import 'package:foresight/Components/CourseListTile.dart';
+import 'package:foresight/Components/app_app_bar.dart';
+import 'package:foresight/Components/search_field.dart';
+import 'package:foresight/Constants/app_colors.dart';
+import 'package:foresight/Pages/CategoryCourses/components/course_list_tile.dart';
 import 'package:get/get.dart';
 
-class CategoryCourses extends StatelessWidget {
-  CategoryCourses({super.key});
+class CategoryCoursesView extends StatelessWidget {
+  CategoryCoursesView({super.key});
 
   final String lesson = Get.arguments;
 

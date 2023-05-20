@@ -5,14 +5,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foresight/Pages/Home/components/skeleton_categories.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:foresight/Constants/FColors.dart';
-import 'package:foresight/Constants/mainLists.dart';
+import 'package:foresight/Constants/app_colors.dart';
+import 'package:foresight/Constants/main_lists.dart';
+import 'package:foresight/Constants/flip_locale.dart';
 
 Widget categoriesWidget() {
   CategoriesCon controller = Get.find();
   return Obx(
     () => SizedBox(
-      height: 375,
+      height: 300,
       width: 1.sw,
       child: Column(
         children: [
@@ -48,15 +49,13 @@ Widget categoriesWidget() {
                     itemCount: controller.categories.length,
                     itemBuilder: (_, index) {
                       return GestureDetector(
-                        onTap: () {
-                          Get.toNamed(
-                            '/CategoryDetails',
-                            arguments: [
-                              controller.categories[index].nameEN,
-                              MainLists.allLottie[index]
-                            ],
-                          );
-                        },
+                        onTap: () => Get.toNamed(
+                          '/CategoryDetailsView',
+                          arguments: [
+                            controller.categories[index],
+                            MainLists.allLottie[index]
+                          ],
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Container(
@@ -75,7 +74,7 @@ Widget categoriesWidget() {
                                   ),
                                 ),
                                 Text(
-                                  Get.locale?.languageCode == 'ar'
+                                  FlipLocale.isLocaleAr()
                                       ? controller.categories[index].nameAR
                                       : controller.categories[index].nameEN,
                                   style: GoogleFonts.tajawal(

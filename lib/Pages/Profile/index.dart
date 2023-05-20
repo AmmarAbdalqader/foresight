@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../Components/FAppBar.dart';
-import '../../Constants/FColors.dart';
+import 'package:foresight/Components/app_app_bar.dart';
+import 'package:foresight/Constants/app_colors.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({Key? key}) : super(key: key);
+class ProfileView extends StatelessWidget {
+  const ProfileView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class Profile extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 15,
+            height: 16,
           ),
           Text(
             userCon.user!.name,

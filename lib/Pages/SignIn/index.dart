@@ -2,14 +2,14 @@ import 'package:foresight/GetControllers/user_con.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Constants/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../Components/input_decoration.dart';
 import '../../Components/loading_widget.dart';
 import '../../Constants/flip_locale.dart';
 
-class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+class SignInView extends StatelessWidget {
+  const SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -194,7 +194,7 @@ class SignIn extends StatelessWidget {
                             ),
                             const SizedBox(width: 6),
                             TextButton(
-                              onPressed: () => Get.toNamed("/SignUp"),
+                              onPressed: () => Get.toNamed("/SignUpView"),
                               child: Text(
                                 "RegisterNow!".tr,
                                 style: const TextStyle(fontSize: 16),

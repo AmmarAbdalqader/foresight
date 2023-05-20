@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Constants/app_colors.dart';
 import 'package:skeletons/skeletons.dart';
 
 class SkeletonCategories extends StatelessWidget {

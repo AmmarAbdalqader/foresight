@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:foresight/Components/FAppBar.dart';
-import 'package:foresight/Constants/FColors.dart';
+import 'package:foresight/Components/app_app_bar.dart';
+import 'package:foresight/Constants/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:foresight/Components/PosterSlider.dart';
+import 'package:foresight/Components/poster_slider.dart';
 
-class CourseDetails extends StatelessWidget {
-  CourseDetails({super.key});
+class CourseDetailsView extends StatelessWidget {
+  CourseDetailsView({super.key});
 
   final String lesson = Get.arguments;
 

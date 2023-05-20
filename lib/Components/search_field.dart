@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../Constants/FColors.dart';
+import '../Constants/app_colors.dart';
 
 class SearchField extends StatelessWidget {
   final String hint;

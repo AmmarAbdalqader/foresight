@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:foresight/Components/FSnackBar.dart';
+import 'package:foresight/Components/app_snack_bars.dart';
 import 'package:foresight/Constants/app_config.dart';
 import 'package:foresight/Helpers/API.dart';
 import 'package:foresight/Helpers/HTTP.dart';

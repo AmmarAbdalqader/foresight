@@ -13,4 +13,6 @@ class FlipLocale {
       await storage.write("Locale", 'ar');
     }
   }
+
+  static bool isLocaleAr() => Get.locale?.languageCode == 'ar';
 }
