@@ -17,12 +17,19 @@ class UserCon extends GetxController {
   var isSignUpLoading = false.obs;
   var obscureText = true.obs;
 
+  var editProfile = false.obs;
+
   void setLoading() => loading.value = !loading.value;
   void flipObscureText() => obscureText.value = !obscureText.value;
   void signUpLoading() => isSignUpLoading.value = !isSignUpLoading.value;
+  void editProfileLoading() => editProfile.value = !editProfile.value;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeySignUp = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKeyProfile = GlobalKey<FormState>();
+
+  var newPasswordCon = TextEditingController().obs;
+  var newPasswordTwoCon = TextEditingController().obs;
 
   var usernameCon = TextEditingController().obs;
   var passwordCon = TextEditingController().obs;
@@ -157,6 +164,16 @@ class UserCon extends GetxController {
         }
       } else {
         await errorFSnackBar(context, 'Ops', 'WrongPassword');
+      }
+    }
+  }
+
+  Future changePassword() async {
+    if (formKeyProfile.currentState!.validate()) {
+      if (identical(newPasswordCon.value.text, newPasswordTwoCon.value.text)) {
+        editProfileLoading();
+        await Future.value();
+        editProfileLoading();
       }
     }
   }

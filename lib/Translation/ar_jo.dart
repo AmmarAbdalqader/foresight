@@ -44,6 +44,9 @@ class Arabic {
     "EnterSecretPassword": "ادخل الرقم السري",
     "WrongPassword": "الكلمة السرية خطأ",
     "AllUsers": "جميع المستخدمين",
-    "WrongFormat": "الصيغة خطأ"
+    "WrongFormat": "الصيغة خطأ",
+    "NewPassword": "كلمة المرور الجديدة",
+    "NewPassword2": "كلمة المرور الجديدة مجدداً",
+    "ChangePassword": "تغيير كلمة المرور"
   };
 }

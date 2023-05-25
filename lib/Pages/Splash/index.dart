@@ -55,7 +55,7 @@ class SplashView extends GetView<UserCon> {
                   ),
                   ValueDelegate.colorFilter(
                     ['Shape Layer 1', '**'],
-                    value: const ColorFilter.mode(mainColor, BlendMode.src),
+                    value: const ColorFilter.mode(niceGrey, BlendMode.src),
                   ),
                 ],
               ),

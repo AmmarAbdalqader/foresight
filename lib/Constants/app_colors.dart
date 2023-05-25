@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const double mainPadding = 12;
+const double primaryPadding = 16;
 
 const Color white = Colors.white;
 const Color black = Colors.black;

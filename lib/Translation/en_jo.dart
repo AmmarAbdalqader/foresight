@@ -44,6 +44,9 @@ class English {
     "EnterSecretPassword": "Enter secret password",
     "WrongPassword": "Wrong password",
     "AllUsers": "All users",
-    "WrongFormat": "Wrong format"
+    "WrongFormat": "Wrong format",
+    "NewPassword": "New password",
+    "NewPassword2": "New password again",
+    "ChangePassword": "Change password"
   };
 }
