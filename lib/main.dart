@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:foresight/Constants/app_routes.dart';
-import 'package:foresight/Helpers/local_notification.dart';
+import 'package:foresight/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_storage/get_storage.dart';
-import 'Translation/my_localization.dart';
+import 'helpers/local_notification.dart';
+import 'translation/my_localization.dart';
 import 'firebase_options.dart';
 
 void main() async {
