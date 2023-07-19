@@ -1,3 +1,4 @@
+import 'package:foresight/pages/home/bindings/home_bindings.dart';
 import 'package:foresight/pages/splash/bindings/splash_bindings.dart';
 import 'package:get/get.dart';
 import 'package:foresight/pages/category_details/index.dart';
@@ -31,9 +32,9 @@ class AppRoutes {
       page: () => const ProfileView(),
     ),
     GetPage(
-      name: AppPages.home,
-      page: () => const HomeView(),
-    ),
+        name: AppPages.home,
+        page: () => const HomeView(),
+        binding: HomeBindings()),
     GetPage(
       name: AppPages.categoryDetails,
       page: () => CategoryDetailsView(),

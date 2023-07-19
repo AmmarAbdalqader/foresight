@@ -1,4 +1,5 @@
 import 'package:foresight/controllers/user_con.dart';
+import 'package:foresight/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -194,7 +195,7 @@ class SignInView extends StatelessWidget {
                             ),
                             const SizedBox(width: 6),
                             TextButton(
-                              onPressed: () => Get.toNamed("/SignUpView"),
+                              onPressed: () => Get.toNamed(AppPages.signUp),
                               child: Text(
                                 "RegisterNow!".tr,
                                 style: const TextStyle(fontSize: 16),

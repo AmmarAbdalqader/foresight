@@ -2,6 +2,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:foresight/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:foresight/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:foresight/components/app_snack_bars.dart';
@@ -66,16 +67,14 @@ class UserCon extends GetxController {
     if (userID != null && userID != 0) {
       await getUserByID(userID);
     } else {
-      Get.offNamed('/SignInView');
-
-      /// pushReplacementNamed
+      Get.offNamed(AppPages.signIn);
     }
   }
 
   Future getUserByID(int userID) async {
     user = await User.getUserByID(userID);
     if (user != null) {
-      Get.offNamed('/HomeView');
+      Get.offNamed(AppPages.home);
     }
   }
 
@@ -91,7 +90,7 @@ class UserCon extends GetxController {
       setLoading();
       if (user != null) {
         clear();
-        Get.offNamed('/HomeView');
+        Get.offNamed(AppPages.home);
       }
     } else {
       await errorFSnackBar(context, 'Ops', 'InputAllFields');
@@ -183,6 +182,6 @@ class UserCon extends GetxController {
     await storage.write("UserID", 0);
     user = null;
     clear();
-    Get.offAllNamed('/SignInView');
+    Get.offAllNamed(AppPages.signIn);
   }
 }

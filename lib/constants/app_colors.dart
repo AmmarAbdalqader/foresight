@@ -8,8 +8,11 @@ const Color black = Colors.black;
 const Color black54 = Colors.black54;
 Color? greyText = Colors.grey[300];
 
-const Color mainColor = Color(0xFF23374D);
+const Color mainOldColor = Color(0xFF23374D);
+// const Color mainColor = Color(0xFF48719e);
+const Color mainColor = Color(0xFFb8cadf);
 const Color primaryColor = Color(0xFF6BB6FF);
+const Color lightColor = Color(0xFFb8cadf);
 const Color eeeeee = Color(0xFFEEEEEE);
 const Color success = Color(0xFF5cb85c);
 const Color warning = Color(0xFFf0ad4e);

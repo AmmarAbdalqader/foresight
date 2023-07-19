@@ -19,7 +19,7 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
-        child: FAppBar(showUserPhoto: false, elevation: 0),
+        child: FAppBar(title: "Foresight", showUserPhoto: false, elevation: 0),
       ),
       backgroundColor: white,
       body: userCon.editProfile.isTrue

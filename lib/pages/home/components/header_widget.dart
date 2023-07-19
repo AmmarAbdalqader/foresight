@@ -15,7 +15,7 @@ Widget headerWidget() {
           padding: const EdgeInsets.all(mainPadding),
           width: 1.sw,
           height: 280,
-          color: primaryColor,
+          color: eeeeee,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -23,7 +23,7 @@ Widget headerWidget() {
                 "LearnEveryThing".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 30,
-                  color: white,
+                  color: niceGrey,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -31,7 +31,7 @@ Widget headerWidget() {
                 "HereInForesight".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
-                  color: greyText,
+                  color: niceGrey.withOpacity(0.5),
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -54,7 +54,7 @@ Widget headerWidget() {
           right: 0,
           child: Center(
             child: SearchField(
-              colorBTN: success,
+              colorBTN: mainColor,
               onPress: () {},
             ),
           ),

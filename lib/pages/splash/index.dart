@@ -11,7 +11,6 @@ class SplashView extends GetView<UserCon> {
 
   @override
   Widget build(BuildContext context) {
-    //Get.lazyPut(() => UserCon(), fenix: true);
     Future.delayed(
       const Duration(seconds: 3),
       () async => await controller.splash(),
@@ -53,7 +52,7 @@ class SplashView extends GetView<UserCon> {
                   ),
                   ValueDelegate.colorFilter(
                     ['Shape Layer 2', '**'],
-                    value: const ColorFilter.mode(primaryColor, BlendMode.src),
+                    value: const ColorFilter.mode(mainOldColor, BlendMode.src),
                   ),
                   ValueDelegate.colorFilter(
                     ['Shape Layer 1', '**'],

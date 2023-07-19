@@ -5,12 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 
 Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
     String okBTN) async {
-  return showDialog<void>(
+  return showDialog(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog(
-        backgroundColor: eeeeee,
         title: Center(child: Text(title.tr)),
         titleTextStyle: GoogleFonts.tajawal(
           fontSize: 25,
@@ -39,18 +38,17 @@ Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
               ),
             ),
           ),
-          ElevatedButton(
+          TextButton(
             onPressed: () {
               Get.back();
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: danger,
+            style: TextButton.styleFrom(
+              foregroundColor: danger,
             ),
             child: Text(
               'Cancel'.tr,
               style: GoogleFonts.tajawal(
                 fontSize: 20,
-                color: white,
               ),
             ),
           ),

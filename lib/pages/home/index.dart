@@ -16,7 +16,6 @@ class HomeView extends GetView<CategoriesCon> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CategoriesCon(), permanent: true);
     return WillPopScope(
       onWillPop: () async {
         return await exitDialog(
@@ -34,10 +33,10 @@ class HomeView extends GetView<CategoriesCon> {
       child: Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
-          child: FAppBar(),
+          child: FAppBar(title: "Foresight"),
         ),
         drawer: const FDrawer(),
-        backgroundColor: mainColor,
+        backgroundColor: eeeeee,
         body: SingleChildScrollView(
           child: Column(
             children: [

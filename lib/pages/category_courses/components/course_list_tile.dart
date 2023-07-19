@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
 
+import '../../../routes/app_pages.dart';
+
 class CourseListTile extends StatelessWidget {
   const CourseListTile({
     super.key,
@@ -24,7 +26,7 @@ class CourseListTile extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () {
-          Get.toNamed("/CourseDetailsView", arguments: lesson);
+          Get.toNamed(AppPages.courseDetailsView, arguments: lesson);
         },
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

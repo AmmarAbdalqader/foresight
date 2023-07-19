@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 Future infoDialog(context, String lesson) async {
-  return showDialog<void>(
+  return showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(

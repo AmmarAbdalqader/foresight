@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import '../constants/app_config.dart';
+import '../routes/app_pages.dart';
 
 class FDrawer extends StatelessWidget {
   const FDrawer({super.key});
@@ -35,7 +36,7 @@ class FDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: () => Get.toNamed("/ProfileView"),
+                    onTap: () => Get.toNamed(AppPages.profile),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [

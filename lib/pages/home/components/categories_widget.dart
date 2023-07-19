@@ -1,4 +1,5 @@
 import 'package:foresight/controllers/categories_con.dart';
+import 'package:foresight/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,8 @@ Widget categoriesWidget() {
               "OurCategories".tr,
               style: GoogleFonts.tajawal(
                 fontSize: 25,
-                color: white,
+                color: niceGrey,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -50,7 +52,7 @@ Widget categoriesWidget() {
                     itemBuilder: (_, index) {
                       return GestureDetector(
                         onTap: () => Get.toNamed(
-                          '/CategoryDetailsView',
+                          AppPages.categoryDetails,
                           arguments: [
                             controller.categories[index],
                             MainLists.allLottie[index]
@@ -71,6 +73,8 @@ Widget categoriesWidget() {
                                   child: Lottie.asset(
                                     "assets/lottie/${controller.categories[index].icon}",
                                     width: 200,
+                                    repeat: false,
+                                    animate: false,
                                   ),
                                 ),
                                 Text(

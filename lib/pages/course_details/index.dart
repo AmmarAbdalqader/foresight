@@ -15,7 +15,7 @@ class CourseDetailsView extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
-        child: FAppBar(),
+        child: FAppBar(title: "Foresight"),
       ),
       backgroundColor: white,
       body: SingleChildScrollView(

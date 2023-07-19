@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class SplashBindings extends Bindings {
   @override
   void dependencies() {
-    Get.put(/*() =>*/ UserCon(), permanent: true);
+    Get.put(UserCon(), permanent: true);
   }
 }

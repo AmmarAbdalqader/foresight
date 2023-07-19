@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_storage/get_storage.dart';
+import 'constants/app_colors.dart';
 import 'helpers/local_notification.dart';
 import 'translation/my_localization.dart';
 import 'firebase_options.dart';
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: Size(MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -49,12 +51,30 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Foresight',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            useMaterial3: true,
             textTheme:
                 Typography.englishLike2018.apply(fontSizeFactor: 1.23.sp),
+            appBarTheme: const AppBarTheme(
+              color: mainColor,
+              centerTitle: true,
+              scrolledUnderElevation: 1,
+              iconTheme: IconThemeData(
+                color: niceGrey,
+              ),
+            ),
+            colorScheme: const ColorScheme.light(
+              onError: danger,
+              error: danger,
+              onErrorContainer: danger,
+            ),
+            progressIndicatorTheme: const ProgressIndicatorThemeData(
+              color: mainOldColor,
+            ),
+            dialogBackgroundColor: Colors.grey[50],
           ),
           translations: MyLocalization(),
           locale: Locale(GetStorage().read("Locale") ?? 'en', 'JO'),
+          fallbackLocale: const Locale('en', 'JO'),
           getPages: AppRoutes.routes,
           initialRoute: AppRoutes.routes.first.name,
         );
