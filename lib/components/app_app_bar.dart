@@ -30,7 +30,6 @@ class FAppBar extends StatelessWidget {
           title,
           style: GoogleFonts.tajawal(
             color: white,
-            letterSpacing: 2,
             fontWeight: FontWeight.w900,
             fontSize: 25,
           ),

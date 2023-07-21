@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:foresight/constants/flip_locale.dart';
 import 'package:foresight/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:foresight/components/info_dialog.dart';
 import 'package:foresight/constants/app_colors.dart';
+import 'package:foresight/models/category_sub.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({Key? key, required this.card}) : super(key: key);
 
-  final String card;
+  final CategorySub card;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onLongPress: () => infoDialog(context, card),
-      onTap: () {
-        Get.toNamed(AppPages.categoryCourses, arguments: card);
-      },
+      onTap: () => Get.toNamed(AppPages.categoryCourses, arguments: card),
       child: Container(
         margin: const EdgeInsets.all(10),
         padding: const EdgeInsets.all(12),
@@ -42,12 +42,12 @@ class CategoryCard extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Lottie.asset(
-                "assets/lottie/$card",
+                "assets/lottie/${card.icon}",
               ),
             ),
             const Spacer(),
             Text(
-              card.split(".")[0],
+              FlipLocale.isLocaleAr() ? card.nameAR : card.nameEN,
               style: GoogleFonts.tajawal(
                 fontSize: 20,
                 color: black,

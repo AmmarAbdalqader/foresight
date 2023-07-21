@@ -47,6 +47,10 @@ class English {
     "WrongFormat": "Wrong format",
     "NewPassword": "New password",
     "NewPassword2": "New password again",
-    "ChangePassword": "Change password"
+    "ChangePassword": "Change password",
+    "PasswordsMustBeIdentical": "Passwords must be identical",
+    "OldPassword": "Old password",
+    "Done": "Done",
+    "Success": "Success"
   };
 }

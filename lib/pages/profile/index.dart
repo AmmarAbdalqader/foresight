@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:foresight/components/app_app_bar.dart';
 import 'package:foresight/constants/app_colors.dart';
-import '../../constants/app_config.dart';
+import 'package:foresight/constants/app_config.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -19,166 +19,214 @@ class ProfileView extends StatelessWidget {
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
-        child: FAppBar(title: "Foresight", showUserPhoto: false, elevation: 0),
+        child: FAppBar(
+          title: "Foresight",
+          showUserPhoto: false,
+          elevation: 0,
+        ),
       ),
       backgroundColor: white,
-      body: userCon.editProfile.isTrue
-          ? const LoadingWidget()
-          : SingleChildScrollView(
-              child: Flex(
-                direction: Axis.vertical,
-                children: [
-                  SizedBox(
-                    height: 150,
-                    child: Stack(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: ClipPath(
-                            clipper: OvalBottomBorderClipper(),
-                            child: Container(
-                              height: 100,
-                              color: mainColor,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          right: 0,
-                          left: 0,
-                          bottom: 0,
-                          child: CircleAvatar(
-                            backgroundColor: mainColor,
-                            radius: 50,
-                            child: Container(
-                              clipBehavior: Clip.antiAlias,
-                              decoration:
-                                  const BoxDecoration(shape: BoxShape.circle),
-                              child: Image(
-                                image: NetworkImage(
-                                  "${AppConfig.images}/${userCon.user!.photo}",
-                                ),
-                                errorBuilder: (context, e, stackTrace) {
-                                  log(e.toString());
-                                  log(stackTrace.toString());
-                                  return const Icon(
-                                    CupertinoIcons.person_crop_circle,
-                                    color: white,
-                                    size: 35,
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    userCon.user!.name,
-                    style: GoogleFonts.tajawal(
-                      color: primaryColor,
-                      fontSize: 35,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  ExpansionTile(
-                    onExpansionChanged: (v) {
-                      userCon.clear();
-                    },
-                    title: Text(
-                      "ChangePassword".tr,
-                      style: const TextStyle(
-                        color: primaryColor,
-                        fontSize: 16,
-                      ),
-                    ),
-                    childrenPadding:
-                        const EdgeInsets.symmetric(horizontal: primaryPadding),
+      body: Obx(
+        () => userCon.editProfile.isTrue
+            ? const Center(
+                child: SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: LoadingWidget(),
+                ),
+              )
+            : GestureDetector(
+                onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+                child: SingleChildScrollView(
+                  child: Flex(
+                    direction: Axis.vertical,
                     children: [
-                      Form(
-                        key: userCon.formKeyProfile,
-                        child: Flex(
-                          direction: Axis.vertical,
+                      SizedBox(
+                        height: 150,
+                        child: Stack(
                           children: [
-                            TextFormField(
-                              controller: userCon.newPasswordCon.value,
-                              decoration: InputDecoration(
-                                icon: const Icon(Icons.password),
-                                iconColor: black54,
-                                border: InputBorder.none,
-                                focusedBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide(color: black54),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ClipPath(
+                                clipper: OvalBottomBorderClipper(),
+                                child: Container(
+                                  height: 100,
+                                  color: mainColor,
                                 ),
-                                enabledBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide(color: black54),
-                                ),
-                                hintText: "NewPassword".tr,
                               ),
-                              style: GoogleFonts.tajawal(
-                                fontSize: 16,
-                                color: black,
-                              ),
-                              validator: (v) {
-                                if (v!.trim().isEmpty) {
-                                  return "InputPassword".tr;
-                                }
-                                return null;
-                              },
                             ),
-                            const SizedBox(height: primaryPadding),
-                            TextFormField(
-                              controller: userCon.newPasswordTwoCon.value,
-                              decoration: InputDecoration(
-                                icon: const Icon(Icons.password),
-                                iconColor: black54,
-                                border: InputBorder.none,
-                                focusedBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide(color: black54),
-                                ),
-                                enabledBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide(color: black54),
-                                ),
-                                hintText: "NewPassword2".tr,
-                              ),
-                              style: GoogleFonts.tajawal(
-                                fontSize: 16,
-                                color: black,
-                              ),
-                              validator: (v) {
-                                if (v!.trim().isEmpty) {
-                                  return "InputPassword".tr;
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: primaryPadding),
-                            Center(
-                              child: ElevatedButton(
-                                onPressed: () async =>
-                                    await userCon.changePassword(),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: mainColor,
-                                  textStyle: const TextStyle(
-                                    fontSize: mainPadding,
+                            Positioned(
+                              right: 0,
+                              left: 0,
+                              bottom: 0,
+                              child: CircleAvatar(
+                                backgroundColor: mainColor,
+                                radius: 50,
+                                child: Container(
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle),
+                                  child: Image(
+                                    image: NetworkImage(
+                                      "${AppConfig.images}/${userCon.user!.photo}",
+                                    ),
+                                    errorBuilder: (context, e, stackTrace) {
+                                      log(e.toString());
+                                      log(stackTrace.toString());
+                                      return const Icon(
+                                        CupertinoIcons.person_crop_circle,
+                                        color: white,
+                                        size: 35,
+                                      );
+                                    },
                                   ),
                                 ),
-                                child: Text("Save".tr),
                               ),
                             ),
                           ],
                         ),
                       ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Text(
+                        userCon.user!.name,
+                        style: GoogleFonts.tajawal(
+                          color: black54,
+                          fontSize: 35,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      ExpansionTile(
+                        onExpansionChanged: (v) => userCon.clear(),
+                        title: Text(
+                          "ChangePassword".tr,
+                          style: const TextStyle(
+                            color: black54,
+                            fontSize: 16,
+                          ),
+                        ),
+                        childrenPadding: const EdgeInsets.symmetric(
+                            horizontal: primaryPadding),
+                        children: [
+                          Form(
+                            key: userCon.formKeyProfile,
+                            child: Flex(
+                              direction: Axis.vertical,
+                              children: [
+                                TextFormField(
+                                  controller: userCon.oldPasswordCon.value,
+                                  decoration: InputDecoration(
+                                    icon: const Icon(Icons.password),
+                                    iconColor: black54,
+                                    border: InputBorder.none,
+                                    focusedBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: black54),
+                                    ),
+                                    enabledBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: black54),
+                                    ),
+                                    errorBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: danger),
+                                    ),
+                                    hintText: "OldPassword".tr,
+                                  ),
+                                  style: GoogleFonts.tajawal(
+                                    fontSize: 16,
+                                    color: black,
+                                  ),
+                                  validator: (v) {
+                                    if (v!.trim().isEmpty) {
+                                      return "InputPassword".tr;
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                const SizedBox(height: primaryPadding),
+                                TextFormField(
+                                  controller: userCon.newPasswordCon.value,
+                                  decoration: InputDecoration(
+                                    icon: const Icon(Icons.password),
+                                    iconColor: black54,
+                                    border: InputBorder.none,
+                                    focusedBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: black54),
+                                    ),
+                                    enabledBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: black54),
+                                    ),
+                                    errorBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: danger),
+                                    ),
+                                    hintText: "NewPassword".tr,
+                                  ),
+                                  style: GoogleFonts.tajawal(
+                                    fontSize: 16,
+                                    color: black,
+                                  ),
+                                  validator: (v) {
+                                    if (v!.trim().isEmpty) {
+                                      return "InputPassword".tr;
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                const SizedBox(height: primaryPadding),
+                                TextFormField(
+                                  controller: userCon.newPasswordTwoCon.value,
+                                  decoration: InputDecoration(
+                                    icon: const Icon(Icons.password),
+                                    iconColor: black54,
+                                    border: InputBorder.none,
+                                    focusedBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: black54),
+                                    ),
+                                    enabledBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: black54),
+                                    ),
+                                    errorBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide(color: danger),
+                                    ),
+                                    hintText: "NewPassword2".tr,
+                                  ),
+                                  style: GoogleFonts.tajawal(
+                                    fontSize: 16,
+                                    color: black,
+                                  ),
+                                  validator: (v) {
+                                    if (v!.trim().isEmpty) {
+                                      return "InputPassword".tr;
+                                    }
+                                    return null;
+                                  },
+                                ),
+                                const SizedBox(height: primaryPadding),
+                                Center(
+                                  child: ElevatedButton(
+                                    onPressed: () async =>
+                                        await userCon.changePassword(context),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: mainColor,
+                                      textStyle: const TextStyle(
+                                        fontSize: mainPadding,
+                                      ),
+                                    ),
+                                    child: Text("Save".tr),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-                ],
+                ),
               ),
-            ),
+      ),
     );
   }
 }

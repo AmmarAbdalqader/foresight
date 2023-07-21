@@ -1,5 +1,4 @@
 import 'package:foresight/controllers/categories_con.dart';
-import 'package:foresight/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +6,6 @@ import 'package:foresight/pages/home/components/skeleton_categories.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:foresight/constants/app_colors.dart';
-import 'package:foresight/constants/main_lists.dart';
 import 'package:foresight/constants/flip_locale.dart';
 
 Widget categoriesWidget() {
@@ -51,13 +49,7 @@ Widget categoriesWidget() {
                     itemCount: controller.categories.length,
                     itemBuilder: (_, index) {
                       return GestureDetector(
-                        onTap: () => Get.toNamed(
-                          AppPages.categoryDetails,
-                          arguments: [
-                            controller.categories[index],
-                            MainLists.allLottie[index]
-                          ],
-                        ),
+                        onTap: () => controller.navigateToCategorySub(index),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8),
                           child: Container(

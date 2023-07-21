@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:foresight/constants/app_config.dart';
 import 'package:foresight/constants/app_colors.dart';
-import 'package:foresight/helpers/API.dart';
-import 'package:foresight/helpers/HTTP.dart';
+import 'package:foresight/helpers/api_endpoints.dart';
+import 'package:foresight/helpers/http.dart';
 import 'package:get/get.dart';
 
 class Categories {

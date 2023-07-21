@@ -72,7 +72,6 @@ class SignUpView extends StatelessWidget {
                             style: GoogleFonts.tajawal(
                               color: mainColor,
                               fontSize: 26,
-                              letterSpacing: 1.5,
                             ),
                           ),
                           const SizedBox(

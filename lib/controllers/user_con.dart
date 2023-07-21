@@ -1,3 +1,4 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:foresight/models/user.dart';
@@ -29,6 +30,7 @@ class UserCon extends GetxController {
   final GlobalKey<FormState> formKeySignUp = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeyProfile = GlobalKey<FormState>();
 
+  var oldPasswordCon = TextEditingController().obs;
   var newPasswordCon = TextEditingController().obs;
   var newPasswordTwoCon = TextEditingController().obs;
 
@@ -167,12 +169,37 @@ class UserCon extends GetxController {
     }
   }
 
-  Future changePassword() async {
+  void clearPasswords() {
+    oldPasswordCon.value.clear();
+    newPasswordCon.value.clear();
+    newPasswordTwoCon.value.clear();
+  }
+
+  Future changePassword(context) async {
     if (formKeyProfile.currentState!.validate()) {
-      if (identical(newPasswordCon.value.text, newPasswordTwoCon.value.text)) {
+      if (newPasswordCon.value.text == newPasswordTwoCon.value.text) {
         editProfileLoading();
-        await Future.delayed(const Duration(seconds: 5));
+        (bool?, String?) res = await User.changePassword(context, user!.id,
+            oldPasswordCon.value.text, newPasswordCon.value.text);
         editProfileLoading();
+        if (res.$1 != null && res.$2 != null) {
+          if (res.$1! && res.$2!.contains("OK")) {
+            foresightSnackBar(context, 'Done', 'Success', ContentType.success);
+            clearPasswords();
+          } else if (res.$1! && res.$2!.contains("WrongPassword")) {
+            foresightSnackBar(
+                context, 'Ops', 'WrongPassword', ContentType.warning);
+            oldPasswordCon.value.clear();
+          } else {
+            foresightSnackBar(context, 'Ops', 'Error', ContentType.failure);
+          }
+        } else {
+          clearPasswords();
+        }
+      } else {
+        foresightSnackBar(
+            context, 'Ops', 'PasswordsMustBeIdentical', ContentType.failure);
+        newPasswordTwoCon.value.clear();
       }
     }
   }

@@ -128,7 +128,11 @@ class FDrawer extends StatelessWidget {
                   color: white,
                 ),
               ),
-              onTap: () => FlipLocale.flipLocale(),
+              onTap: () async {
+                Get.back();
+                await Future.delayed(const Duration(milliseconds: 200));
+                FlipLocale.flipLocale();
+              },
               leading: const Icon(
                 Icons.translate,
                 color: white,

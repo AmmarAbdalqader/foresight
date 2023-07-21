@@ -47,6 +47,10 @@ class Arabic {
     "WrongFormat": "الصيغة خطأ",
     "NewPassword": "كلمة المرور الجديدة",
     "NewPassword2": "كلمة المرور الجديدة مجدداً",
-    "ChangePassword": "تغيير كلمة المرور"
+    "ChangePassword": "تغيير كلمة المرور",
+    "PasswordsMustBeIdentical": "كلمتين المرور يجب ان يكونا متطابقتين",
+    "OldPassword": "كلمة المرور القديمة",
+    "Done": "تم",
+    "Success": "تم بنجاح"
   };
 }

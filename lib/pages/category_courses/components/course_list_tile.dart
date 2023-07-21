@@ -1,18 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:foresight/constants/app_colors.dart';
+import 'package:foresight/constants/flip_locale.dart';
+import 'package:foresight/models/category_sub.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'dart:math';
-
-import '../../../routes/app_pages.dart';
+import 'package:foresight/routes/app_pages.dart';
 
 class CourseListTile extends StatelessWidget {
   const CourseListTile({
     super.key,
-    required this.lesson,
+    required this.categorySub,
   });
-  final String lesson;
+  final CategorySub categorySub;
 
   double doubleInRange(Random source, num start, num end) =>
       source.nextDouble() * (end - start) + start;
@@ -24,18 +26,19 @@ class CourseListTile extends StatelessWidget {
         horizontal: 8,
         vertical: 12,
       ),
-      child: ListTile(
-        onTap: () {
-          Get.toNamed(AppPages.courseDetailsView, arguments: lesson);
-        },
+      child: CupertinoListTile(
+        onTap: () =>
+            Get.toNamed(AppPages.courseDetailsView, arguments: categorySub),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: Text(
-                lesson.split(".")[0],
+                FlipLocale.isLocaleAr()
+                    ? categorySub.nameAR
+                    : categorySub.nameEN,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 18,
                   color: black,
                 ),
               ),
@@ -63,9 +66,9 @@ class CourseListTile extends StatelessWidget {
               height: 5,
             ),
             Text(
-              lesson.split(".")[0],
+              FlipLocale.isLocaleAr() ? categorySub.nameAR : categorySub.nameEN,
               style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 color: black54,
               ),
             ),
@@ -75,7 +78,7 @@ class CourseListTile extends StatelessWidget {
             const Row(
               children: [
                 Icon(
-                  Icons.person,
+                  CupertinoIcons.person_alt,
                   size: 20,
                 ),
                 SizedBox(
@@ -84,7 +87,7 @@ class CourseListTile extends StatelessWidget {
                 Text(
                   "Ammar Abdalqader", // tutor
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 12,
                     color: black54,
                   ),
                 ),
@@ -92,15 +95,8 @@ class CourseListTile extends StatelessWidget {
             ),
           ],
         ),
-        leading: Lottie.asset("assets/lottie/$lesson"),
-        horizontalTitleGap: 1.2,
-        isThreeLine: true,
-        contentPadding: const EdgeInsets.all(12),
-        visualDensity: const VisualDensity(
-          vertical: VisualDensity.maximumDensity,
-          horizontal: VisualDensity.maximumDensity,
-        ),
-        minVerticalPadding: 20,
+        leading: Lottie.asset("assets/lottie/${categorySub.icon}"),
+        leadingSize: 50,
       ),
     );
   }

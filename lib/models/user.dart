@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:foresight/components/app_snack_bars.dart';
 import 'package:foresight/constants/app_config.dart';
-import 'package:foresight/helpers/API.dart';
-import 'package:foresight/helpers/HTTP.dart';
+import 'package:foresight/helpers/api_endpoints.dart';
+import 'package:foresight/helpers/http.dart';
 import 'package:get_storage/get_storage.dart';
 
 class User {
@@ -80,7 +80,7 @@ class User {
     try {
       var res = await HTTP.patch(AppConfig.url + API.signUp, user.toMap());
 
-      if (res.statusCode == 200 && res.reasonPhrase!.contains("OK")) {
+      if (res.statusCode == 200 && res.body.contains("OK")) {
         return 1;
       } else if (res.statusCode == 555 &&
           res.reasonPhrase!.contains("unknown")) {
@@ -104,5 +104,20 @@ class User {
           .toList();
     }
     return list;
+  }
+
+  static Future<(bool?, String?)> changePassword(
+      context, int userID, String oldPassword, String newPassword) async {
+    try {
+      var res = await HTTP.patch("${AppConfig.url}${API.changePassword}", {
+        "userID": userID,
+        "oldPassword": oldPassword,
+        "newPassword": newPassword
+      });
+      return (res.statusCode == 200, res.body);
+    } catch (e) {
+      errorFSnackBar(context, "Ops", "Error");
+      return (null, null);
+    }
   }
 }
