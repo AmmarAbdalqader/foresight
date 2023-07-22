@@ -51,6 +51,7 @@ class Arabic {
     "PasswordsMustBeIdentical": "كلمتين المرور يجب ان يكونا متطابقتين",
     "OldPassword": "كلمة المرور القديمة",
     "Done": "تم",
-    "Success": "تم بنجاح"
+    "Success": "تم بنجاح",
+    "ContactUs": "تواصل معنا"
   };
 }

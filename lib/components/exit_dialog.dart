@@ -3,8 +3,8 @@ import 'package:foresight/constants/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
-    String okBTN) async {
+Future exitDialog(BuildContext context, String title, String subTitle,
+    VoidCallback onClick, String okBTN) async {
   return showDialog(
     context: context,
     barrierDismissible: false,
@@ -27,29 +27,17 @@ Future exitDialog(context, String title, String subTitle, VoidCallback onClick,
         actions: [
           ElevatedButton(
             onPressed: onClick,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: success,
-            ),
             child: Text(
               okBTN.tr,
-              style: GoogleFonts.tajawal(
-                fontSize: 20,
-                color: white,
-              ),
             ),
           ),
           TextButton(
-            onPressed: () {
-              Get.back();
-            },
+            onPressed: () => Get.back(),
             style: TextButton.styleFrom(
-              foregroundColor: danger,
+              foregroundColor: black54,
             ),
             child: Text(
               'Cancel'.tr,
-              style: GoogleFonts.tajawal(
-                fontSize: 20,
-              ),
             ),
           ),
         ],

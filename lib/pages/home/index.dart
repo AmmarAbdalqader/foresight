@@ -6,6 +6,7 @@ import 'package:foresight/components/app_drawer.dart';
 import 'package:foresight/constants/app_colors.dart';
 import 'package:foresight/components/poster_slider.dart';
 import 'package:foresight/controllers/categories_con.dart';
+import 'package:foresight/pages/home/components/contact_us.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'components/categories_widget.dart';
@@ -38,12 +39,16 @@ class HomeView extends GetView<CategoriesCon> {
         drawer: const FDrawer(),
         backgroundColor: eeeeee,
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              headerWidget(),
-              categoriesWidget(),
-              const PosterSlider(),
-            ],
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+            child: const Column(
+              children: [
+                HeaderSection(),
+                CategoriesSection(),
+                PosterSlider(),
+                ContactUs(),
+              ],
+            ),
           ),
         ),
       ),

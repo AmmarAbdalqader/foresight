@@ -46,19 +46,14 @@ Future<String?> secretPasswordDialog(context) {
         ),
         actions: [
           const Text(
-            AppConfig.appID,
+            "dd${AppConfig.appID}yyyy",
             style: TextStyle(
               fontSize: 8,
               color: black,
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              Get.back(result: passwordCon.text);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: success,
-            ),
+            onPressed: () => Get.back(result: passwordCon.text),
             child: Text(
               'Submit'.tr,
               style: const TextStyle(
@@ -67,9 +62,7 @@ Future<String?> secretPasswordDialog(context) {
             ),
           ),
           TextButton(
-            onPressed: () {
-              Get.back(result: null);
-            },
+            onPressed: () => Get.back(result: null),
             style: TextButton.styleFrom(
               foregroundColor: black54,
             ),
@@ -91,8 +84,8 @@ Future secretUsersDialog(context, List<User> allUsers) {
     context: context,
     builder: (BuildContext context) {
       return SizedBox(
-        height: 900.h,
-        width: 80.w,
+        height: 100.h,
+        width: 100.w,
         child: AlertDialog(
           backgroundColor: white,
           title: Center(child: Text("AllUsers".tr)),
@@ -110,7 +103,10 @@ Future secretUsersDialog(context, List<User> allUsers) {
                   child: ListView.separated(
                     shrinkWrap: true,
                     itemCount: allUsers.length,
-                    separatorBuilder: (context, index) => const Divider(),
+                    separatorBuilder: (context, index) => const Divider(
+                      indent: 25,
+                      endIndent: 25,
+                    ),
                     itemBuilder: (context, index) {
                       User user = allUsers[index];
                       return ListTile(

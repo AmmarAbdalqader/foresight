@@ -62,7 +62,8 @@ class MyApp extends StatelessWidget {
                 color: niceGrey,
               ),
             ),
-            colorScheme: const ColorScheme.light(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: mainColor,
               onError: danger,
               error: danger,
               onErrorContainer: danger,

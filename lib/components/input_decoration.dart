@@ -10,16 +10,25 @@ InputDecoration inputDecoration(String hint, IconData icon) => InputDecoration(
       ),
       border: InputBorder.none,
       focusedBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: black54),
+        borderSide: BorderSide(
+          color: mainColor,
+          width: 2.5,
+        ),
       ),
       enabledBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: black54),
+        borderSide: BorderSide(
+          color: black54,
+        ),
       ),
       errorBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: danger),
+        borderSide: BorderSide(
+          color: danger,
+        ),
       ),
       focusedErrorBorder: const UnderlineInputBorder(
-        borderSide: BorderSide(color: danger),
+        borderSide: BorderSide(
+          color: danger,
+        ),
       ),
       hintText: hint.tr,
     );

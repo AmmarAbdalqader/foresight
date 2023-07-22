@@ -209,6 +209,6 @@ class UserCon extends GetxController {
     await storage.write("UserID", 0);
     user = null;
     clear();
-    Get.offAllNamed(AppPages.signIn);
+    Get.offAllNamed(AppPages.splash);
   }
 }

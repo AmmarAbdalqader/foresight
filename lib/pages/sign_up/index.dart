@@ -70,7 +70,7 @@ class SignUpView extends StatelessWidget {
                           Text(
                             "SignUp".tr,
                             style: GoogleFonts.tajawal(
-                              color: mainColor,
+                              color: black54,
                               fontSize: 26,
                             ),
                           ),
@@ -205,9 +205,10 @@ class SignUpView extends StatelessWidget {
                                           await userCon.signUp(context),
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: mainColor,
+                                        foregroundColor: white,
                                         textStyle: GoogleFonts.tajawal(
-                                          color: white,
                                           fontSize: 22,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                         minimumSize: const Size(150, 50),
                                       ),
@@ -225,7 +226,10 @@ class SignUpView extends StatelessWidget {
                             onPressed: () => Get.back(),
                             child: Text(
                               "SignIn".tr,
-                              style: const TextStyle(fontSize: 16),
+                              style: const TextStyle(
+                                fontSize: 16,
+                                letterSpacing: 0,
+                              ),
                             ),
                           ),
                           const Spacer(),

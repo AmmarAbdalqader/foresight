@@ -69,7 +69,7 @@ class SignInView extends StatelessWidget {
                         Text(
                           "SignIn".tr,
                           style: GoogleFonts.tajawal(
-                            color: mainColor,
+                            color: black54,
                             fontSize: 26,
                           ),
                         ),
@@ -157,9 +157,10 @@ class SignInView extends StatelessWidget {
                                         await userCon.signIn(context),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: mainColor,
+                                      foregroundColor: white,
                                       textStyle: GoogleFonts.tajawal(
-                                        color: white,
                                         fontSize: 22,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                       minimumSize: const Size(150, 50),
                                     ),
@@ -176,7 +177,10 @@ class SignInView extends StatelessWidget {
                           onPressed: () async {},
                           child: Text(
                             "ForgetYourPassword?".tr,
-                            style: const TextStyle(fontSize: 14),
+                            style: const TextStyle(
+                              fontSize: 14,
+                              letterSpacing: 0,
+                            ),
                           ),
                         ),
                         const SizedBox(
@@ -197,7 +201,10 @@ class SignInView extends StatelessWidget {
                               onPressed: () => Get.toNamed(AppPages.signUp),
                               child: Text(
                                 "RegisterNow!".tr,
-                                style: const TextStyle(fontSize: 16),
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  letterSpacing: 0,
+                                ),
                               ),
                             ),
                           ],

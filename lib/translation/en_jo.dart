@@ -51,6 +51,7 @@ class English {
     "PasswordsMustBeIdentical": "Passwords must be identical",
     "OldPassword": "Old password",
     "Done": "Done",
-    "Success": "Success"
+    "Success": "Success",
+    "ContactUs": "Contact us"
   };
 }
