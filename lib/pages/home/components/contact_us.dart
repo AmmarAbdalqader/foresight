@@ -29,15 +29,15 @@ class ContactUs extends StatelessWidget {
                       child: Text(
                         "ContactUs".tr,
                         style: GoogleFonts.tajawal(
-                          fontSize: 24,
+                          fontSize: 20,
                           color: black54,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: mainPadding),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: mainPadding, vertical: mainPadding),
                       child: SelectableText(
                         "foresight.elearning@aka.com",
                         style: GoogleFonts.tajawal(

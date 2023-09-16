@@ -86,12 +86,37 @@ class FDrawer extends StatelessWidget {
                           width: 15,
                         ),
                         Expanded(
-                          child: Text(
-                            userCon.user!.name,
-                            style: GoogleFonts.tajawal(
-                              color: white,
-                              fontSize: 25,
-                            ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      userCon.user!.name,
+                                      style: GoogleFonts.tajawal(
+                                        color: white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      userCon.user!.email!,
+                                      style: GoogleFonts.tajawal(
+                                        color: white,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -100,18 +125,14 @@ class FDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(
-              color: white,
-              endIndent: 15,
-              indent: 15,
-              height: 25,
-            ),
+            const Spacer(),
             ListTile(
               title: Text(
                 "Favorites".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
                   color: white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               onTap: () async {},
@@ -120,12 +141,14 @@ class FDrawer extends StatelessWidget {
                 color: danger,
               ),
             ),
+            const Spacer(flex: 5),
             ListTile(
               title: Text(
                 "OtherLang".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
                   color: white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               onTap: () async {
@@ -138,12 +161,16 @@ class FDrawer extends StatelessWidget {
                 color: white,
               ),
             ),
+            const SizedBox(
+              height: mainPadding,
+            ),
             ListTile(
               title: Text(
                 "SignOut".tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 20,
                   color: white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               onTap: () async => await exitDialog(
@@ -165,6 +192,7 @@ class FDrawer extends StatelessWidget {
                 style: GoogleFonts.tajawal(
                   fontSize: 15,
                   color: black,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             )

@@ -9,11 +9,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:foresight/constants/app_config.dart';
 
 class FAppBar extends StatelessWidget {
-  const FAppBar(
-      {super.key,
-      required this.title,
-      this.showUserPhoto = true,
-      this.elevation = 8});
+  const FAppBar({
+    super.key,
+    required this.title,
+    this.showUserPhoto = true,
+    this.elevation = 8,
+  });
 
   final String title;
   final bool showUserPhoto;
@@ -31,7 +32,7 @@ class FAppBar extends StatelessWidget {
           style: GoogleFonts.tajawal(
             color: white,
             fontWeight: FontWeight.w900,
-            fontSize: 25,
+            fontSize: 20,
           ),
         ),
       ),

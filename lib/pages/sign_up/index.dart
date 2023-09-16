@@ -74,9 +74,7 @@ class SignUpView extends StatelessWidget {
                               fontSize: 26,
                             ),
                           ),
-                          const SizedBox(
-                            height: 12,
-                          ),
+                          const SizedBox(height: 12),
                           Obx(
                             () => TextFormField(
                               controller: userCon.nameCon.value,
@@ -99,9 +97,7 @@ class SignUpView extends StatelessWidget {
                               },
                             ),
                           ),
-                          const SizedBox(
-                            height: 16,
-                          ),
+                          const SizedBox(height: 16),
                           TextFormField(
                             controller: userCon.emailCon.value,
                             focusNode: userCon.emailFocus.value,
@@ -142,9 +138,7 @@ class SignUpView extends StatelessWidget {
                               },
                             ),
                           ),
-                          const SizedBox(
-                            height: 16,
-                          ),
+                          const SizedBox(height: 16),
                           Obx(
                             () => Row(
                               children: [
@@ -177,25 +171,24 @@ class SignUpView extends StatelessWidget {
                                 ),
                                 IconButton(
                                   onPressed: () => userCon.flipObscureText(),
-                                  icon: Icon(
-                                    userCon.obscureText.isTrue
-                                        ? CupertinoIcons.eye_slash_fill
-                                        : CupertinoIcons.eye_solid,
-                                    color: userCon.obscureText.isTrue
-                                        ? black54
-                                        : primaryColor,
-                                  ),
+                                  icon: userCon.obscureText.value
+                                      ? const Icon(
+                                          CupertinoIcons.eye_slash_fill,
+                                          color: black54,
+                                        )
+                                      : const Icon(
+                                          CupertinoIcons.eye_solid,
+                                          color: primaryColor,
+                                        ),
                                 ),
                               ],
                             ),
                           ),
-                          const SizedBox(
-                            height: 28,
-                          ),
+                          const SizedBox(height: 28),
                           Obx(
                             () => AnimatedSwitcher(
                               duration: const Duration(milliseconds: 200),
-                              child: userCon.isSignUpLoading.isTrue
+                              child: userCon.isSignUpLoading.value
                                   ? const LoadingWidget(
                                       key: ValueKey(1),
                                     )
@@ -217,9 +210,6 @@ class SignUpView extends StatelessWidget {
                                       ),
                                     ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 12.5,
                           ),
                           const Spacer(),
                           TextButton(
@@ -244,9 +234,7 @@ class SignUpView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 65,
-                  ),
+                  const SizedBox(height: 65),
                 ],
               ),
             ),

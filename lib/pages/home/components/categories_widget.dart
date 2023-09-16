@@ -30,7 +30,7 @@ class CategoriesSection extends StatelessWidget {
                   Text(
                     "OurCategories".tr,
                     style: GoogleFonts.tajawal(
-                      fontSize: 25,
+                      fontSize: 20,
                       color: niceGrey,
                       fontWeight: FontWeight.bold,
                     ),
@@ -85,8 +85,9 @@ class CategoriesSection extends StatelessWidget {
                                         ? controller.categories[index].nameAR
                                         : controller.categories[index].nameEN,
                                     style: GoogleFonts.tajawal(
-                                      fontSize: 18,
+                                      fontSize: 16,
                                       color: black,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ],

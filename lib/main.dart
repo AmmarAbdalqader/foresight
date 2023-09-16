@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:foresight/routes/app_pages.dart';
 import 'package:foresight/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -46,40 +47,34 @@ class MyApp extends StatelessWidget {
           MediaQuery.of(context).size.height),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Foresight',
-          theme: ThemeData(
-            useMaterial3: true,
-            textTheme:
-                Typography.englishLike2018.apply(fontSizeFactor: 1.23.sp),
-            appBarTheme: const AppBarTheme(
-              color: mainColor,
-              centerTitle: true,
-              scrolledUnderElevation: 1,
-              iconTheme: IconThemeData(
-                color: niceGrey,
-              ),
-            ),
-            colorScheme: ColorScheme.fromSeed(
-              seedColor: mainColor,
-              onError: danger,
-              error: danger,
-              onErrorContainer: danger,
-            ),
-            progressIndicatorTheme: const ProgressIndicatorThemeData(
-              color: mainOldColor,
-            ),
-            dialogBackgroundColor: Colors.grey[50],
+      builder: (_, __) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Foresight',
+        theme: ThemeData(
+          useMaterial3: true,
+          textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.23.sp),
+          appBarTheme: const AppBarTheme(
+            color: mainColor,
+            centerTitle: true,
+            scrolledUnderElevation: 1,
+            iconTheme: IconThemeData(color: niceGrey),
           ),
-          translations: MyLocalization(),
-          locale: Locale(GetStorage().read("Locale") ?? 'en', 'JO'),
-          fallbackLocale: const Locale('en', 'JO'),
-          getPages: AppRoutes.routes,
-          initialRoute: AppRoutes.routes.first.name,
-        );
-      },
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: mainColor,
+            onError: danger,
+            error: danger,
+            onErrorContainer: danger,
+          ),
+          progressIndicatorTheme:
+              const ProgressIndicatorThemeData(color: mainOldColor),
+          dialogBackgroundColor: Colors.grey[50],
+        ),
+        translations: MyLocalization(),
+        locale: Locale(GetStorage().read("Locale") ?? 'en', 'JO'),
+        fallbackLocale: const Locale('en', 'JO'),
+        getPages: AppRoutes.routes,
+        initialRoute: AppPages.splash,
+      ),
     );
   }
 }

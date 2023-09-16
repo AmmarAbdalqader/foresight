@@ -13,7 +13,7 @@ import 'package:foresight/pages/category_courses/index.dart';
 import 'app_pages.dart';
 
 class AppRoutes {
-  static List<GetPage<dynamic>> routes = [
+  static List<GetPage> routes = [
     GetPage(
       name: AppPages.splash,
       page: () => const SplashView(),
@@ -32,9 +32,10 @@ class AppRoutes {
       page: () => const ProfileView(),
     ),
     GetPage(
-        name: AppPages.home,
-        page: () => const HomeView(),
-        binding: HomeBindings()),
+      name: AppPages.home,
+      page: () => const HomeView(),
+      binding: HomeBindings(),
+    ),
     GetPage(
       name: AppPages.categoryDetails,
       page: () => CategoryDetailsView(),

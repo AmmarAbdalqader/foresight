@@ -9,18 +9,18 @@ import '../../components/input_decoration.dart';
 import '../../components/loading_widget.dart';
 import '../../constants/flip_locale.dart';
 
-class SignInView extends StatelessWidget {
+class SignInView extends GetView<UserCon> {
   const SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    UserCon userCon = Get.find();
+    // controller controller = Get.find();
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Form(
-          key: userCon.formKey,
+          key: controller.formKey,
           child: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -35,7 +35,8 @@ class SignInView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 45),
                   child: GestureDetector(
-                    onLongPress: () async => await userCon.secretList(context),
+                    onLongPress: () async =>
+                        await controller.secretList(context),
                     child: Text(
                       "Foresight",
                       style: GoogleFonts.tajawal(
@@ -76,8 +77,8 @@ class SignInView extends StatelessWidget {
                         const Spacer(),
                         Obx(
                           () => TextFormField(
-                            controller: userCon.usernameCon.value,
-                            focusNode: userCon.usernameFocus.value,
+                            controller: controller.usernameCon.value,
+                            focusNode: controller.usernameFocus.value,
                             decoration: inputDecoration(
                               "Username",
                               Icons.person,
@@ -87,7 +88,7 @@ class SignInView extends StatelessWidget {
                               color: black,
                             ),
                             onFieldSubmitted: (e) =>
-                                userCon.passwordFocus.value.requestFocus(),
+                                controller.passwordFocus.value.requestFocus(),
                             validator: (v) {
                               if (v!.trim().isEmpty) {
                                 return "InputUsername".tr;
@@ -104,9 +105,9 @@ class SignInView extends StatelessWidget {
                             Expanded(
                               child: Obx(
                                 () => TextFormField(
-                                  controller: userCon.passwordCon.value,
-                                  obscureText: userCon.obscureText.value,
-                                  focusNode: userCon.passwordFocus.value,
+                                  controller: controller.passwordCon.value,
+                                  obscureText: controller.obscureText.value,
+                                  focusNode: controller.passwordFocus.value,
                                   decoration: inputDecoration(
                                     "Password",
                                     Icons.password,
@@ -116,7 +117,7 @@ class SignInView extends StatelessWidget {
                                     color: black,
                                   ),
                                   onFieldSubmitted: (e) async =>
-                                      await userCon.signIn(context),
+                                      await controller.signIn(context),
                                   validator: (v) {
                                     if (v!.trim().isEmpty) {
                                       return "InputPassword".tr;
@@ -128,12 +129,12 @@ class SignInView extends StatelessWidget {
                             ),
                             Obx(
                               () => IconButton(
-                                onPressed: () => userCon.flipObscureText(),
+                                onPressed: () => controller.flipObscureText(),
                                 icon: Icon(
-                                  userCon.obscureText.isTrue
+                                  controller.obscureText.isTrue
                                       ? CupertinoIcons.eye_slash_fill
                                       : CupertinoIcons.eye_solid,
-                                  color: userCon.obscureText.isTrue
+                                  color: controller.obscureText.isTrue
                                       ? black54
                                       : primaryColor,
                                 ),
@@ -147,14 +148,14 @@ class SignInView extends StatelessWidget {
                         Obx(
                           () => AnimatedSwitcher(
                             duration: const Duration(milliseconds: 100),
-                            child: userCon.loading.isTrue
+                            child: controller.loading.isTrue
                                 ? const LoadingWidget(
                                     key: ValueKey(1),
                                   )
                                 : ElevatedButton(
                                     key: const ValueKey(2),
                                     onPressed: () async =>
-                                        await userCon.signIn(context),
+                                        await controller.signIn(context),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: mainColor,
                                       foregroundColor: white,

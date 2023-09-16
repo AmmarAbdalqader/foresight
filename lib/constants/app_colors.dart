@@ -6,6 +6,7 @@ const double primaryPadding = 16;
 const Color white = Colors.white;
 const Color black = Colors.black;
 const Color black54 = Colors.black54;
+const Color black38 = Colors.black38;
 Color? greyText = Colors.grey[300];
 
 const Color mainOldColor = Color(0xFF23374D);

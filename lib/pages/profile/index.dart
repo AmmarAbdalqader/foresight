@@ -10,12 +10,12 @@ import 'package:foresight/components/app_app_bar.dart';
 import 'package:foresight/constants/app_colors.dart';
 import 'package:foresight/constants/app_config.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends GetView<UserCon> {
   const ProfileView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    UserCon userCon = Get.find();
+    //UserCon controller = Get.find();
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(kBottomNavigationBarHeight),
@@ -27,7 +27,7 @@ class ProfileView extends StatelessWidget {
       ),
       backgroundColor: white,
       body: Obx(
-        () => userCon.editProfile.isTrue
+        () => controller.editProfile.isTrue
             ? const Center(
                 child: SizedBox(
                   height: 100,
@@ -68,7 +68,7 @@ class ProfileView extends StatelessWidget {
                                       shape: BoxShape.circle),
                                   child: Image(
                                     image: NetworkImage(
-                                      "${AppConfig.images}/${userCon.user!.photo}",
+                                      "${AppConfig.images}/${controller.user!.photo}",
                                     ),
                                     errorBuilder: (context, e, stackTrace) {
                                       log(e.toString());
@@ -90,7 +90,7 @@ class ProfileView extends StatelessWidget {
                         height: 50,
                       ),
                       Text(
-                        userCon.user!.name,
+                        controller.user!.name,
                         style: GoogleFonts.tajawal(
                           color: black54,
                           fontSize: 35,
@@ -101,7 +101,7 @@ class ProfileView extends StatelessWidget {
                         height: 50,
                       ),
                       ExpansionTile(
-                        onExpansionChanged: (v) => userCon.clear(),
+                        onExpansionChanged: (v) => controller.clear(),
                         title: Text(
                           "ChangePassword".tr,
                           style: const TextStyle(
@@ -113,12 +113,12 @@ class ProfileView extends StatelessWidget {
                             horizontal: primaryPadding),
                         children: [
                           Form(
-                            key: userCon.formKeyProfile,
+                            key: controller.formKeyProfile,
                             child: Flex(
                               direction: Axis.vertical,
                               children: [
                                 TextFormField(
-                                  controller: userCon.oldPasswordCon.value,
+                                  controller: controller.oldPasswordCon.value,
                                   decoration: InputDecoration(
                                     icon: const Icon(Icons.password),
                                     iconColor: black54,
@@ -147,7 +147,7 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 const SizedBox(height: primaryPadding),
                                 TextFormField(
-                                  controller: userCon.newPasswordCon.value,
+                                  controller: controller.newPasswordCon.value,
                                   decoration: InputDecoration(
                                     icon: const Icon(Icons.password),
                                     iconColor: black54,
@@ -176,7 +176,8 @@ class ProfileView extends StatelessWidget {
                                 ),
                                 const SizedBox(height: primaryPadding),
                                 TextFormField(
-                                  controller: userCon.newPasswordTwoCon.value,
+                                  controller:
+                                      controller.newPasswordTwoCon.value,
                                   decoration: InputDecoration(
                                     icon: const Icon(Icons.password),
                                     iconColor: black54,
@@ -206,8 +207,8 @@ class ProfileView extends StatelessWidget {
                                 const SizedBox(height: primaryPadding),
                                 Center(
                                   child: ElevatedButton(
-                                    onPressed: () async =>
-                                        await userCon.changePassword(context),
+                                    onPressed: () async => await controller
+                                        .changePassword(context),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: mainColor,
                                       textStyle: const TextStyle(

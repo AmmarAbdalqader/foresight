@@ -12,8 +12,9 @@ Future exitDialog(BuildContext context, String title, String subTitle,
       return AlertDialog(
         title: Center(child: Text(title.tr)),
         titleTextStyle: GoogleFonts.tajawal(
-          fontSize: 25,
+          fontSize: 22,
           color: black,
+          fontWeight: FontWeight.bold,
         ),
         contentPadding: const EdgeInsets.all(35),
         content: Text(
@@ -21,12 +22,19 @@ Future exitDialog(BuildContext context, String title, String subTitle,
           textAlign: TextAlign.center,
         ),
         contentTextStyle: GoogleFonts.tajawal(
-          fontSize: 20,
+          fontSize: 18,
           color: black54,
+          fontWeight: FontWeight.bold,
         ),
         actions: [
           ElevatedButton(
             onPressed: onClick,
+            style: ElevatedButton.styleFrom(
+              foregroundColor: danger,
+              textStyle: const TextStyle(
+                fontSize: 13,
+              ),
+            ),
             child: Text(
               okBTN.tr,
             ),
@@ -35,6 +43,9 @@ Future exitDialog(BuildContext context, String title, String subTitle,
             onPressed: () => Get.back(),
             style: TextButton.styleFrom(
               foregroundColor: black54,
+              textStyle: const TextStyle(
+                fontSize: 13,
+              ),
             ),
             child: Text(
               'Cancel'.tr,

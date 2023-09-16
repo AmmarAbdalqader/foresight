@@ -1,7 +1,9 @@
-import 'package:get/get_navigation/src/root/internacionalization.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'ar_jo.dart';
 import 'en_jo.dart';
 
+@immutable
 class MyLocalization extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {

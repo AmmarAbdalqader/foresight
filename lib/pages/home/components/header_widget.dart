@@ -26,7 +26,7 @@ class HeaderSection extends StatelessWidget {
                 Text(
                   "LearnEveryThing".tr,
                   style: GoogleFonts.tajawal(
-                    fontSize: 30,
+                    fontSize: 20,
                     color: niceGrey,
                     fontWeight: FontWeight.bold,
                   ),
@@ -34,7 +34,7 @@ class HeaderSection extends StatelessWidget {
                 Text(
                   "HereInForesight".tr,
                   style: GoogleFonts.tajawal(
-                    fontSize: 20,
+                    fontSize: 16,
                     color: niceGrey.withOpacity(0.5),
                     fontWeight: FontWeight.bold,
                   ),

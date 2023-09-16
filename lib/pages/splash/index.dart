@@ -22,9 +22,7 @@ class SplashView extends GetView<UserCon> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Spacer(
-              flex: 2,
-            ),
+            const Spacer(flex: 2),
             Text(
               "Foresight",
               style: GoogleFonts.tajawal(
@@ -34,9 +32,7 @@ class SplashView extends GetView<UserCon> {
                 fontSize: 50,
               ),
             ),
-            const Spacer(
-              flex: 3,
-            ),
+            const Spacer(flex: 3),
             Lottie.asset(
               "assets/lottie/loadingDots.json",
               width: 200,

@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:foresight/components/app_app_bar.dart';
 import '../../controllers/categories_con.dart';
 
-class CategoryDetailsView extends StatelessWidget {
+class CategoryDetailsView extends GetView<CategoriesCon> {
   final Categories category = Get.arguments[0];
 
   CategoryDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    CategoriesCon controller = Get.find();
+    // CategoriesCon controller = Get.find();
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kBottomNavigationBarHeight),

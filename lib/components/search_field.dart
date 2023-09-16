@@ -15,6 +15,13 @@ class SearchField extends StatelessWidget {
     required this.onPress,
     this.hint = "Search...",
   });
+
+  static final TextStyle textStyle = GoogleFonts.tajawal(
+    fontSize: 16,
+    color: black38,
+    fontWeight: FontWeight.bold,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,11 +53,9 @@ class SearchField extends StatelessWidget {
               icon: const Icon(Icons.search, color: white),
             ),
           ),
+          hintStyle: textStyle,
         ),
-        style: GoogleFonts.tajawal(
-          fontSize: 20,
-          color: Colors.black,
-        ),
+        style: textStyle,
       ),
     );
   }

@@ -11,53 +11,47 @@ import 'package:foresight/components/secret_password.dart';
 import 'package:foresight/constants/app_config.dart';
 
 class UserCon extends GetxController {
-  User? user;
-
-  List<User> allUsers = [];
-
-  var loading = false.obs;
-  var isSignUpLoading = false.obs;
-  var obscureText = true.obs;
-
-  var editProfile = false.obs;
-
-  void setLoading() => loading.value = !loading.value;
-  void flipObscureText() => obscureText.value = !obscureText.value;
-  void signUpLoading() => isSignUpLoading.value = !isSignUpLoading.value;
-  void editProfileLoading() => editProfile.value = !editProfile.value;
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeySignUp = GlobalKey<FormState>();
   final GlobalKey<FormState> formKeyProfile = GlobalKey<FormState>();
 
-  var oldPasswordCon = TextEditingController().obs;
-  var newPasswordCon = TextEditingController().obs;
-  var newPasswordTwoCon = TextEditingController().obs;
+  User? user;
 
-  var usernameCon = TextEditingController().obs;
-  var passwordCon = TextEditingController().obs;
+  List<User> allUsers = [];
 
-  var usernameSignCon = TextEditingController().obs;
-  var passwordSignCon = TextEditingController().obs;
-  var emailCon = TextEditingController().obs;
-  var nameCon = TextEditingController().obs;
+  RxBool loading = false.obs;
+  RxBool isSignUpLoading = false.obs;
+  RxBool obscureText = true.obs;
+  RxBool editProfile = false.obs;
 
-  var userFocus = FocusNode().obs;
-  var passFocus = FocusNode().obs;
-  var emailFocus = FocusNode().obs;
+  Rx<TextEditingController> oldPasswordCon = TextEditingController().obs;
+  Rx<TextEditingController> newPasswordCon = TextEditingController().obs;
+  Rx<TextEditingController> newPasswordTwoCon = TextEditingController().obs;
 
-  var usernameFocus = FocusNode().obs;
-  var passwordFocus = FocusNode().obs;
+  Rx<TextEditingController> usernameCon = TextEditingController().obs;
+  Rx<TextEditingController> passwordCon = TextEditingController().obs;
+
+  Rx<TextEditingController> usernameSignCon = TextEditingController().obs;
+  Rx<TextEditingController> passwordSignCon = TextEditingController().obs;
+  Rx<TextEditingController> emailCon = TextEditingController().obs;
+  Rx<TextEditingController> nameCon = TextEditingController().obs;
+
+  Rx<FocusNode> userFocus = FocusNode().obs;
+  Rx<FocusNode> passFocus = FocusNode().obs;
+  Rx<FocusNode> emailFocus = FocusNode().obs;
+
+  Rx<FocusNode> usernameFocus = FocusNode().obs;
+  Rx<FocusNode> passwordFocus = FocusNode().obs;
 
   static RegExp emailRegex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
   String? token = "";
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  void flipLoading() => loading.value = !loading.value;
+  void flipObscureText() => obscureText.value = !obscureText.value;
+  void signUpLoading() => isSignUpLoading.value = !isSignUpLoading.value;
+  void editProfileLoading() => editProfile.value = !editProfile.value;
 
   Future splash() async {
     if (!kIsWeb) {
@@ -83,13 +77,13 @@ class UserCon extends GetxController {
   Future signIn(context) async {
     FocusScope.of(context).requestFocus(FocusNode());
     if (formKey.currentState!.validate()) {
-      setLoading();
+      flipLoading();
       user = await User.signIn(context, {
         "username": usernameCon.value.text.trim(),
         "password": passwordCon.value.text,
         "token": token ?? ""
       });
-      setLoading();
+      flipLoading();
       if (user != null) {
         clear();
         Get.offNamed(AppPages.home);
@@ -109,6 +103,7 @@ class UserCon extends GetxController {
     loading.value = false;
     isSignUpLoading.value = false;
     obscureText.value = true;
+    update();
   }
 
   Future signUp(context) async {
@@ -173,6 +168,7 @@ class UserCon extends GetxController {
     oldPasswordCon.value.clear();
     newPasswordCon.value.clear();
     newPasswordTwoCon.value.clear();
+    update();
   }
 
   Future changePassword(context) async {
